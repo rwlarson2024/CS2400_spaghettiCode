@@ -51,18 +51,18 @@ public interface BagInterface<T>
 		 @return  A newly allocated object of all the entries in the bag.
 		 @param bag  The bag to be combined with.
                 Note: Combines all entries into one object, including possible duplicates.*/
-	public T union(T bag);
+	public ResizableArrayBag<T> union(ResizableArrayBag<T> bag);
 
 	/** Creates an intersection of two bag objects.
 		 @return  A newly allocated object of all the entries in the bag.
 		 @param bag  The bag to be overlapped with.
                 Note: Combines overlapping entries into one bag, including possible duplicates.*/
-	public T intersection(T bag);
+	public ResizableArrayBag<T> intersection(ResizableArrayBag<T> bag);
 
 	/** Creates a difference of two bag objects.
 		 @return  A newly allocated object of all the entries in the bag.
 		 @param bag  The object to be used for the difference.
                 Note: Removes entries from one bag that occurs in the second bag, 
 				including possible duplicates.*/
-	public T difference(T bag);
+	public ResizableArrayBag<T> difference(ResizableArrayBag<T> bag);
 } // end BagInterface
