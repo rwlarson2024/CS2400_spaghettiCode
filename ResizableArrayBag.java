@@ -17,6 +17,28 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         integrityOK = true;
     }
 
+    public ResizableArrayBag(ResizableArrayBag<T> other)
+    {
+        this.bag = other.getBag();
+        this.integrityOK = other.getIntegrityOK();
+        this.numberOfEntries = other.getNumberOfEntries();
+    }
+
+    public T[] getBag()
+    {
+        return bag;
+    }
+
+    public boolean getIntegrityOK()
+    {
+        return integrityOK;
+    }
+
+    public int getNumberOfEntries()
+    {
+        return numberOfEntries;
+    }
+
     public ResizableArrayBag(int capacity)
     {
         numberOfEntries = 0;
@@ -191,12 +213,14 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public ResizableArrayBag<T> intersection(ResizableArrayBag<T> other)
     {
         ResizableArrayBag<T> tempBag = new ResizableArrayBag<>();
+        ResizableArrayBag<T> copiedBag = new ResizableArrayBag<>(other);
         T[] temp = this.toArray();
         for (T entry : temp) 
         {
-            if (other.contains(entry))
+            if (copiedBag.contains(entry))
             {
                 tempBag.add(entry);
+                copiedBag.remove(entry);
             }
         }
         return tempBag;
@@ -205,11 +229,13 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public ResizableArrayBag<T> difference(ResizableArrayBag<T> other)
     {
         ResizableArrayBag<T> tempBag = new ResizableArrayBag<>();
+        ResizableArrayBag<T> copiedBag = new ResizableArrayBag<>(other);
         T[] temp = this.toArray();
         for (T entry : temp) 
         {
-            if (other.contains(entry))
+            if (copiedBag.contains(entry))
             {
+                copiedBag.remove(entry);
                 continue;
             }
             tempBag.add(entry);
