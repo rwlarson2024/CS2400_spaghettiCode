@@ -30,13 +30,14 @@ public class ArrayBagTest
 
         System.out.println();
         
+        
         BagInterface<String> leftOver1 = bagOne.difference(bagTwo);
         Object[] temp3 = leftOver1.toArray();
         for (int index = 0; index < temp3.length; index++)
         {
             System.out.print(temp3[index] + " ");
         }
-
+        
         System.out.println();
         
         BagInterface<String> leftOver2 = bagTwo.difference(bagOne);
@@ -45,5 +46,6 @@ public class ArrayBagTest
         {
             System.out.print(temp4[index] + " ");
         }
-    } 
+             
+    }
 }
