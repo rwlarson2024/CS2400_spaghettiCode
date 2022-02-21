@@ -47,6 +47,9 @@ public interface BagInterface<T>
                 Note: If the bag is empty, the returned array is empty. */
 	public T[] toArray();
 
+	/** Displays the bag array */
+	public void displayBag();
+
 	/** Creates a union of two bag objects.
 		 @return  A newly allocated object of all the entries in the bag.
 		 @param bag  The bag to be combined with.

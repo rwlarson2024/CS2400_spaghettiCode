@@ -28,17 +28,16 @@ public class ResizableArrayBag<T> implements BagInterface<T>
 
     public ResizableArrayBag(T[] bag, boolean integrityOK, int numberOfEntries)
     {
-        this.bag = bag;
+        @SuppressWarnings("unchecked")
+        T[] tempBag = (T[])new Object[DEFAULT_CAPACITY];
+        for (int index = 0; index < bag.length; index++)
+        {
+            tempBag[index] = bag[index];
+        }
+        this.bag = tempBag;
         this.integrityOK = integrityOK;
         this.numberOfEntries = numberOfEntries;
     }
-
-    /*
-    public ResizableArrayBag<T> copyResizableArrayBag(ResizableArrayBag<T> other)
-    {
-        return new ResizableArrayBag<>(other.bag, other.integrityOK, other.numberOfEntries);
-    }
-    */
 
     public T[] getBag()
     {
@@ -194,6 +193,16 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     {
       if (!integrityOK)
          throw new SecurityException("ArrayBag object is corrupt.");
+    }
+
+    public void displayBag()
+    {
+        Object[] temp = this.toArray();
+        for (int index = 0; index < temp.length; index++)
+        {
+            System.out.print(temp[index] + " ");
+        }
+        System.out.println();
     }
     
     public ResizableArrayBag<T> union(ResizableArrayBag<T> other)
