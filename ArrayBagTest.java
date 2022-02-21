@@ -15,7 +15,7 @@ public class ArrayBagTest
         BagInterface<String> everything = bagOne.union(bagTwo);
         everything.displayBag();
 
-        BagInterface<String> commonItems = bagTwo.intersection(bagOne);
+        BagInterface<String> commonItems = bagOne.intersection(bagTwo);
         commonItems.displayBag();
         
         BagInterface<String> leftOver1 = bagOne.difference(bagTwo);

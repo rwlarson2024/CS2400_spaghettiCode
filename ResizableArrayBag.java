@@ -26,17 +26,17 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         integrityOK = true;
     }
 
-    public ResizableArrayBag(T[] bag, boolean integrityOK, int numberOfEntries)
+    public ResizableArrayBag(ResizableArrayBag<T> other)
     {
         @SuppressWarnings("unchecked")
         T[] tempBag = (T[])new Object[DEFAULT_CAPACITY];
-        for (int index = 0; index < bag.length; index++)
+        for (int index = 0; index < other.bag.length; index++)
         {
-            tempBag[index] = bag[index];
+            tempBag[index] = other.bag[index];
         }
         this.bag = tempBag;
-        this.integrityOK = integrityOK;
-        this.numberOfEntries = numberOfEntries;
+        this.integrityOK = other.integrityOK;
+        this.numberOfEntries = other.numberOfEntries;
     }
 
     public T[] getBag()
@@ -150,7 +150,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         return where;
     }
 	
-	public void clear()
+    public void clear()
     {
         while (!isEmpty())
         {
@@ -224,7 +224,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public ResizableArrayBag<T> intersection(ResizableArrayBag<T> other)
     {
         ResizableArrayBag<T> tempBag = new ResizableArrayBag<>();
-        ResizableArrayBag<T> copiedBag = new ResizableArrayBag<>(other.bag, other.integrityOK, other.numberOfEntries);
+        ResizableArrayBag<T> copiedBag = new ResizableArrayBag<>(other);
         T[] temp = this.toArray();
         for (T entry : temp) 
         {
@@ -240,7 +240,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public ResizableArrayBag<T> difference(ResizableArrayBag<T> other)
     {
         ResizableArrayBag<T> tempBag = new ResizableArrayBag<>();
-        ResizableArrayBag<T> copiedBag = new ResizableArrayBag<>(other.bag, other.integrityOK, other.numberOfEntries);
+        ResizableArrayBag<T> copiedBag = new ResizableArrayBag<>(other);
         T[] temp = this.toArray();
         for (T entry : temp) 
         {
