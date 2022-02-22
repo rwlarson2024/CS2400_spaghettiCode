@@ -1,6 +1,5 @@
 //Initial commit 
 
-
 package BagPackage;
 public class LinkedBag<T> implements BagInterface<T> 
 {
@@ -12,18 +11,18 @@ public class LinkedBag<T> implements BagInterface<T>
         firstNode = null;
         numberOfEntries = 0;
     }
-    private class Node
+    private class Node<T>
     {
-
+        
     }
     public boolean add(T newEntry)
     {
-        Node newNode = New Node(newEntry);
+        Node<T> newNode = new Node<>(newEntry);
         newNode.next = firstNode;
 
         firstNode = newNode;
         numberOfEntries++; 
-        return true
+        return true;
     }
     public T remove()
     {
@@ -36,10 +35,10 @@ public class LinkedBag<T> implements BagInterface<T>
         }
         return result; 
     }
-    private Node getReferenceTo(T anEntry)
+    private Node<T> getReferenceTo(T anEntry)
     {
         boolean found = false;
-        Node currentNode = firstNode;
+        Node<T> currentNode = firstNode;
         while(!found && (currentNode !=null))
         {
             if(anEntry.equals(currentNode.getData()))
@@ -47,12 +46,12 @@ public class LinkedBag<T> implements BagInterface<T>
             else
                 currentNode = currentNode.getNextNode();
         }
-        return currentNode:
+        return currentNode;
     }
     public boolean remove(T anEntry)
     {
-        boolean result = false
-        Node nodeN = getReferenceTo(anEntry);
+        boolean result = false;
+        Node<T> nodeN = getReferenceTo(anEntry);
         if(nodeN != null )
         {
             nodeN.setData(firstNode.getData());
@@ -79,7 +78,7 @@ public class LinkedBag<T> implements BagInterface<T>
     {
         int frequency = 0;
         int counter = 0; 
-        Node currentNode = firstNode;
+        Node<T> currentNode = firstNode;
         while((counter < numberOfEntries)&& (currentNode != null))
         {
             if(anEntry.equals(currentNode.getData()))
@@ -94,7 +93,7 @@ public class LinkedBag<T> implements BagInterface<T>
     public boolean contains(T anEntry)
     {
         boolean found = false;
-        Node currentNode = firstNode;
+        Node<T> currentNode = firstNode;
         while (!found &&(currentNode != null))
         {
             if(anEntry.equals(currentNode.getData()))
@@ -107,14 +106,14 @@ public class LinkedBag<T> implements BagInterface<T>
     public T[] toArray()
     {
         @SuppressWarnings("unchecked")
-        T[] result = (T[])new object[numberOfEntries];
+        T[] result = (T[])new Object[numberOfEntries];
         int index = 0; 
-        node currentNode = firstNode;
+        Node<T> currentNode = firstNode;
         while ((index < numberOfEntries) && (currentNode != null))
         {
             result[index] = currentNode.getData();
             index++;
-            curentNode = curentNode.getNextNode();
+            currentNode = currentNode.getNextNode();
         }
         return result;
     }

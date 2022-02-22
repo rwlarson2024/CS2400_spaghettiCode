@@ -8,7 +8,7 @@ class Node<T>
     {
         this(dataPortion, null);
     }
-    Node(T dataPortion, Node nextNode)
+    Node(T dataPortion, Node<T> nextNode)
     {
         data = dataPortion;
         next = nextNode;
@@ -27,6 +27,6 @@ class Node<T>
     }
     void setNextNode(Node<T> nextNode)
      {
-         next = nexNode;
+         next = nextNode;
      }
 }
