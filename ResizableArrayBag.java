@@ -29,7 +29,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public ResizableArrayBag(ResizableArrayBag<T> other)
     {
         @SuppressWarnings("unchecked")
-        T[] tempBag = (T[])new Object[DEFAULT_CAPACITY];
+        T[] tempBag = (T[])new Object[other.bag.length];
         for (int index = 0; index < other.bag.length; index++)
         {
             tempBag[index] = other.bag[index];
