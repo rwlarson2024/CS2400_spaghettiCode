@@ -1,4 +1,5 @@
 //initial commit
+
 package BagPackage;
 class Node<T>
 {
@@ -26,7 +27,7 @@ class Node<T>
         return next;
     }
     void setNextNode(Node<T> nextNode)
-     {
-         next = nextNode;
-     }
+    {
+        next = nextNode;
+    }
 }

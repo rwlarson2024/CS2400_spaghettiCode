@@ -4,11 +4,11 @@ public class ArrayBagTest
 {
     public static void main(String[] args) 
     {
-        ResizableArrayBag<String> bagOne = new ResizableArrayBag<>();
+        BagInterface<String> bagOne = new ResizableArrayBag<>();
         String[] bagOneContents = {"a", "b", "c"};
         bagOne.add(bagOneContents);
         
-        ResizableArrayBag<String> bagTwo = new ResizableArrayBag<>();
+        BagInterface<String> bagTwo = new ResizableArrayBag<>();
         String[] bagTwoContents = {"b", "b", "d", "e"};
         bagTwo.add(bagTwoContents);
 

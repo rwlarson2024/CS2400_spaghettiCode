@@ -3,6 +3,7 @@
 package BagPackage;
 public class LinkedBag<T> implements BagInterface<T> 
 {
+    
     private Node<T> firstNode;
     private int numberOfEntries;
 
@@ -13,7 +14,7 @@ public class LinkedBag<T> implements BagInterface<T>
     }
     private class Node<T>
     {
-        
+
     }
     public boolean add(T newEntry)
     {
@@ -117,5 +118,4 @@ public class LinkedBag<T> implements BagInterface<T>
         }
         return result;
     }
-
 }

@@ -19,6 +19,11 @@ public interface BagInterface<T>
 	    @return  True if the addition is successful, or false if not. */
 	public boolean add(T newEntry);
 
+	/** Adds contents of an array to this bag.
+	    @param contents  The objects to be added as new entries.
+	    @return  True if the addition is successful, or false if not. */
+	public boolean add(T[] contents);
+
 	/** Removes one unspecified entry from this bag, if possible.
        @return  Either the removed entry, if the removal.
                 was successful, or null. */
@@ -54,18 +59,18 @@ public interface BagInterface<T>
 		 @return  A newly allocated object of all the entries in the bag.
 		 @param bag  The bag to be combined with.
                 Note: Combines all entries into one object, including possible duplicates.*/
-	public ResizableArrayBag<T> union(ResizableArrayBag<T> bag);
+	public BagInterface<T> union(BagInterface<T> bag);
 
 	/** Creates an intersection of two bag objects.
 		 @return  A newly allocated object of all the entries in the bag.
 		 @param bag  The bag to be overlapped with.
                 Note: Combines overlapping entries into one bag, including possible duplicates.*/
-	public ResizableArrayBag<T> intersection(ResizableArrayBag<T> bag);
+	public BagInterface<T> intersection(BagInterface<T> bag);
 
 	/** Creates a difference of two bag objects.
 		 @return  A newly allocated object of all the entries in the bag.
 		 @param bag  The object to be used for the difference.
                 Note: Removes entries from one bag that occurs in the second bag, 
 				including possible duplicates.*/
-	public ResizableArrayBag<T> difference(ResizableArrayBag<T> bag);
+	public BagInterface<T> difference(BagInterface<T> bag);
 } // end BagInterface

@@ -205,7 +205,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         System.out.println();
     }
     
-    public ResizableArrayBag<T> union(ResizableArrayBag<T> other)
+    public BagInterface<T> union(BagInterface<T> other)
     {
         ResizableArrayBag<T> tempBag = new ResizableArrayBag<>();
         T[] temp = this.toArray();
@@ -221,10 +221,11 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         return tempBag;
     }
     
-    public ResizableArrayBag<T> intersection(ResizableArrayBag<T> other)
+    public BagInterface<T> intersection(BagInterface<T> other)
     {
-        ResizableArrayBag<T> tempBag = new ResizableArrayBag<>();
-        ResizableArrayBag<T> copiedBag = new ResizableArrayBag<>(other);
+        BagInterface<T> tempBag = new ResizableArrayBag<>();
+        ResizableArrayBag<T> castedOther = (ResizableArrayBag<T>) other;
+        BagInterface<T> copiedBag = new ResizableArrayBag<>(castedOther);
         T[] temp = this.toArray();
         for (T entry : temp) 
         {
@@ -237,10 +238,11 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         return tempBag;
     }
    
-    public ResizableArrayBag<T> difference(ResizableArrayBag<T> other)
+    public BagInterface<T> difference(BagInterface<T> other)
     {
-        ResizableArrayBag<T> tempBag = new ResizableArrayBag<>();
-        ResizableArrayBag<T> copiedBag = new ResizableArrayBag<>(other);
+        BagInterface<T> tempBag = new ResizableArrayBag<>();
+        ResizableArrayBag<T> castedOther = (ResizableArrayBag<T>) other;
+        BagInterface<T> copiedBag = new ResizableArrayBag<>(castedOther);
         T[] temp = this.toArray();
         for (T entry : temp) 
         {
