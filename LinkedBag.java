@@ -204,6 +204,7 @@ public class LinkedBag<T> implements BagInterface<T>
     public BagInterface<T> union(BagInterface<T> other)
     {
         LinkedBag<T> tempBag = new LinkedBag<>();
+        /*
         T[] temp = other.toArray();
         for (T entry : temp) 
         {
@@ -214,7 +215,22 @@ public class LinkedBag<T> implements BagInterface<T>
         {
             tempBag.add(entry);
         }
+        */
+        LinkedBag<T> castedOther = (LinkedBag<T>) other;
+        Node<T> currentNode = castedOther.firstNode;
+        while (currentNode != null)
+        {
+            tempBag.add(currentNode.getData());
+            currentNode = currentNode.getNextNode();
+        }
+        currentNode = this.firstNode;
+        while (currentNode != null)
+        {
+            tempBag.add(currentNode.getData());
+            currentNode = currentNode.getNextNode();
+        }
         return tempBag;
+
     }
 
     public BagInterface<T> intersection(BagInterface<T> other)
@@ -222,6 +238,7 @@ public class LinkedBag<T> implements BagInterface<T>
         BagInterface<T> tempBag = new LinkedBag<>();
         LinkedBag<T> castedOther = (LinkedBag<T>) other;
         BagInterface<T> copiedBag = new LinkedBag<>(castedOther);
+        /*
         T[] temp = this.toArray();
         for (T entry : temp) 
         {
@@ -231,6 +248,17 @@ public class LinkedBag<T> implements BagInterface<T>
                 copiedBag.remove(entry);
             }
         }
+        */
+        Node<T> currentNode = this.firstNode;
+        while (currentNode != null)
+        {
+            if (copiedBag.contains(currentNode.getData()))
+            {
+                tempBag.add(currentNode.getData());
+                copiedBag.remove(currentNode.getData());
+            }
+            currentNode = currentNode.getNextNode();
+        } 
         return tempBag;
     }
 
@@ -239,6 +267,7 @@ public class LinkedBag<T> implements BagInterface<T>
         BagInterface<T> tempBag = new LinkedBag<>();
         LinkedBag<T> castedOther = (LinkedBag<T>) other;
         BagInterface<T> copiedBag = new LinkedBag<>(castedOther);
+        /*
         T[] temp = this.toArray();
         for (T entry : temp) 
         {
@@ -249,6 +278,20 @@ public class LinkedBag<T> implements BagInterface<T>
             }
             tempBag.add(entry);
         }
+        */
+        Node<T> currentNode = this.firstNode;
+        while (currentNode != null)
+        {
+            if (copiedBag.contains(currentNode.getData()))
+            {
+                copiedBag.remove(currentNode.getData());
+            }
+            else
+            {
+                tempBag.add(currentNode.getData());
+            }
+            currentNode = currentNode.getNextNode();
+        } 
         return tempBag;
     }
 }
