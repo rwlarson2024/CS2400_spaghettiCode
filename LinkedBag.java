@@ -1,6 +1,5 @@
 //Initial commit 
 //Can this code work for me?
-//testing
 public class LinkedBag<T> implements BagInterface<T> 
 {
     private Node<T> firstNode;
