@@ -138,7 +138,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         int index = 0;
         while (!found && (index < numberOfEntries))
         {
-            if (anEntry == (bag[index]))
+            if (anEntry.equals(bag[index]))
             {
                 found = true;
                 where = index;
@@ -162,7 +162,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         int counter = 0;
         for (int index = 0; index < numberOfEntries; index++)
         {
-            if (anEntry == bag[index])
+            if (anEntry.equals(bag[index]))
             {
                 counter++;
             }
