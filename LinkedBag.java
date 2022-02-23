@@ -1,32 +1,82 @@
 //Initial commit 
 
-package BagPackage;
 public class LinkedBag<T> implements BagInterface<T> 
 {
-    
     private Node<T> firstNode;
     private int numberOfEntries;
+    private boolean integrityOK = false;
 
     public LinkedBag()
     {
         firstNode = null;
         numberOfEntries = 0;
+        integrityOK = true;
     }
+
+    public LinkedBag(LinkedBag<T> other)
+    {
+        
+        this.numberOfEntries = other.numberOfEntries;
+        this.integrityOK = other.integrityOK;
+    }
+
     private class Node<T>
     {
-
+        private T data;
+        private Node<T> next;
+        Node(T dataPortion)
+        {
+            this(dataPortion, null);
+        }
+        Node(T dataPortion, Node<T> nextNode)
+        {
+            data = dataPortion;
+            next = nextNode;
+        }
+        T getData()
+        {
+            return data;
+        }
+        void setData(T newData)
+        {
+            data = newData;
+        }
+        Node<T> getNextNode()
+        {
+            return next;
+        }
+        void setNextNode(Node<T> nextNode)
+        {
+            next = nextNode;
+        }
     }
+
     public boolean add(T newEntry)
     {
+        checkIntegrity();
+        boolean result = true;
         Node<T> newNode = new Node<>(newEntry);
         newNode.next = firstNode;
 
         firstNode = newNode;
         numberOfEntries++; 
-        return true;
+        return result;
     }
+
+    public boolean add(T[] contents)
+    {
+        checkIntegrity();
+        boolean result = true;
+        for (int index = 0; index < contents.length; index++)
+        {
+            add(contents[index]);
+        }
+        return result;
+    }
+
     public T remove()
     {
+        checkIntegrity();
         T result = null;
         if(firstNode != null)
         {
@@ -36,6 +86,22 @@ public class LinkedBag<T> implements BagInterface<T>
         }
         return result; 
     }
+
+    public boolean remove(T anEntry)
+    {
+        checkIntegrity();
+        boolean result = false;
+        Node<T> nodeN = getReferenceTo(anEntry);
+        if(nodeN != null )
+        {
+            nodeN.setData(firstNode.getData());
+            firstNode = firstNode.getNextNode();
+            numberOfEntries--;
+            result = true;  
+        }
+        return result; 
+    }
+
     private Node<T> getReferenceTo(T anEntry)
     {
         boolean found = false;
@@ -49,38 +115,30 @@ public class LinkedBag<T> implements BagInterface<T>
         }
         return currentNode;
     }
-    public boolean remove(T anEntry)
-    {
-        boolean result = false;
-        Node<T> nodeN = getReferenceTo(anEntry);
-        if(nodeN != null )
-        {
-            nodeN.setData(firstNode.getData());
-            firstNode = firstNode.getNextNode();
-                numberOfEntries--;
-            result = true;  
-        }
-        return result; 
-    }
+
     public boolean isEmpty()
     {
         return numberOfEntries == 0;
     }
+
     public int getCurrentSize()
     {
         return numberOfEntries;
     }
+
     public void clear()
     {
         while(!isEmpty())
             remove();
     }
+
     public int getFrequencyOf(T anEntry)
     {
+        checkIntegrity();
         int frequency = 0;
         int counter = 0; 
         Node<T> currentNode = firstNode;
-        while((counter < numberOfEntries)&& (currentNode != null))
+        while((counter < numberOfEntries) && (currentNode != null))
         {
             if(anEntry.equals(currentNode.getData()))
             {
@@ -91,8 +149,10 @@ public class LinkedBag<T> implements BagInterface<T>
         }
         return frequency;
     }
+
     public boolean contains(T anEntry)
     {
+        checkIntegrity();
         boolean found = false;
         Node<T> currentNode = firstNode;
         while (!found &&(currentNode != null))
@@ -104,6 +164,7 @@ public class LinkedBag<T> implements BagInterface<T>
         }
         return found;
     }
+
     public T[] toArray()
     {
         @SuppressWarnings("unchecked")
@@ -117,5 +178,47 @@ public class LinkedBag<T> implements BagInterface<T>
             currentNode = currentNode.getNextNode();
         }
         return result;
+    }
+
+    public void checkIntegrity()
+    {
+        if (!integrityOK)
+            throw new SecurityException("ArrayBag object is corrupt.");
+    }
+
+    public void displayBag()
+    {
+        Object[] temp = this.toArray();
+        for (int index = 0; index < temp.length; index++)
+        {
+            System.out.print(temp[index] + " ");
+        }
+        System.out.println();
+    }
+
+    public BagInterface<T> union(BagInterface<T> other)
+    {
+        LinkedBag<T> tempBag = new LinkedBag<>();
+        T[] temp = this.toArray();
+        for (T entry : temp) 
+        {
+            tempBag.add(entry);
+        }
+        temp = other.toArray();
+        for (T entry : temp) 
+        {
+            tempBag.add(entry);
+        }
+        return tempBag;
+    }
+
+    public BagInterface<T> intersection(BagInterface<T> other)
+    {
+
+    }
+
+    public BagInterface<T> difference(BagInterface<T> other)
+    {
+        
     }
 }

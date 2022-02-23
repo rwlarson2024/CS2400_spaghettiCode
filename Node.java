@@ -1,6 +1,5 @@
 //initial commit
 
-package BagPackage;
 class Node<T>
 {
     private T data;
