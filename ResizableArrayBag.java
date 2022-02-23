@@ -83,10 +83,6 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         boolean result = true;
         for (int index = 0; index < contents.length; index++)
         {
-            if(isFull())
-            {
-                doubleCapacity();
-            }
             add(contents[index]);
         }
         return result;
