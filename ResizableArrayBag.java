@@ -28,15 +28,14 @@ public class ResizableArrayBag<T> implements BagInterface<T>
 
     public ResizableArrayBag(ResizableArrayBag<T> other)
     {
-        /*
         @SuppressWarnings("unchecked")
         T[] tempBag = (T[])new Object[other.bag.length];
         for (int index = 0; index < other.bag.length; index++)
         {
             tempBag[index] = other.bag[index];
         }
-        */
-        this.bag = Arrays.copyOf(other.toArray(), other.bag.length);;
+        this.bag = tempBag;
+        //this.bag = Arrays.copyOf(other.toArray(), other.bag.length);;
         this.integrityOK = other.integrityOK;
         this.numberOfEntries = other.numberOfEntries;
     }
