@@ -3,11 +3,11 @@ public class LinkedBagTest
 {
     public static void main(String[] args) 
     {
-        LinkedBag<String> bagOne = new LinkedBag<>();
+        BagInterface<String> bagOne = new LinkedBag<>();
         String[] bagOneContents = {"a", "b", "c"};
         bagOne.add(bagOneContents);
             
-        LinkedBag<String> bagTwo = new LinkedBag<>();
+        BagInterface<String> bagTwo = new LinkedBag<>();
         String[] bagTwoContents = {"b", "b", "d", "e"};
         bagTwo.add(bagTwoContents);
     
