@@ -1,9 +1,7 @@
 //Initial commit 
-
-package BagPackage;
+//Can this code work for me?
 public class LinkedBag<T> implements BagInterface<T> 
 {
-    
     private Node<T> firstNode;
     private int numberOfEntries;
 
@@ -12,18 +10,44 @@ public class LinkedBag<T> implements BagInterface<T>
         firstNode = null;
         numberOfEntries = 0;
     }
-    private class Node<T>
+    private class Node
     {
-
+        private T data;
+        private Node next;
+        private Node(T dataPortion)
+        {
+            this(dataPortion, null);
+        }
+        private Node(T dataPortion, Node nextNode)
+        {
+            data = dataPortion;
+            next = nextNode;
+        }
+        private T getData()
+        {
+            return data;
+        }
+        private void setData(T newData)
+        {
+            data = newData;
+        }
+        private Node getNextNode()
+        {
+            return next;
+        }
+        private void setNextNode(Node nextNode)
+        {
+            next = nextNode;
+        }
     }
     public boolean add(T newEntry)
     {
-        Node<T> newNode = new Node<>(newEntry);
+        Node newNode = New Node(newEntry);
         newNode.next = firstNode;
 
         firstNode = newNode;
         numberOfEntries++; 
-        return true;
+        return true
     }
     public T remove()
     {
@@ -36,10 +60,10 @@ public class LinkedBag<T> implements BagInterface<T>
         }
         return result; 
     }
-    private Node<T> getReferenceTo(T anEntry)
+    private Node getReferenceTo(T anEntry)
     {
         boolean found = false;
-        Node<T> currentNode = firstNode;
+        Node currentNode = firstNode;
         while(!found && (currentNode !=null))
         {
             if(anEntry.equals(currentNode.getData()))
@@ -47,12 +71,12 @@ public class LinkedBag<T> implements BagInterface<T>
             else
                 currentNode = currentNode.getNextNode();
         }
-        return currentNode;
+        return currentNode:
     }
     public boolean remove(T anEntry)
     {
-        boolean result = false;
-        Node<T> nodeN = getReferenceTo(anEntry);
+        boolean result = false
+        Node nodeN = getReferenceTo(anEntry);
         if(nodeN != null )
         {
             nodeN.setData(firstNode.getData());
@@ -79,7 +103,7 @@ public class LinkedBag<T> implements BagInterface<T>
     {
         int frequency = 0;
         int counter = 0; 
-        Node<T> currentNode = firstNode;
+        Node currentNode = firstNode;
         while((counter < numberOfEntries)&& (currentNode != null))
         {
             if(anEntry.equals(currentNode.getData()))
@@ -94,7 +118,7 @@ public class LinkedBag<T> implements BagInterface<T>
     public boolean contains(T anEntry)
     {
         boolean found = false;
-        Node<T> currentNode = firstNode;
+        Node currentNode = firstNode;
         while (!found &&(currentNode != null))
         {
             if(anEntry.equals(currentNode.getData()))
@@ -107,15 +131,16 @@ public class LinkedBag<T> implements BagInterface<T>
     public T[] toArray()
     {
         @SuppressWarnings("unchecked")
-        T[] result = (T[])new Object[numberOfEntries];
+        T[] result = (T[])new object[numberOfEntries];
         int index = 0; 
-        Node<T> currentNode = firstNode;
+        node currentNode = firstNode;
         while ((index < numberOfEntries) && (currentNode != null))
         {
             result[index] = currentNode.getData();
             index++;
-            currentNode = currentNode.getNextNode();
+            curentNode = curentNode.getNextNode();
         }
         return result;
     }
+
 }
