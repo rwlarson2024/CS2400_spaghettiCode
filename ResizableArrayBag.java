@@ -40,16 +40,6 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         this.numberOfEntries = other.numberOfEntries;
     }
 
-    public T[] getBag()
-    {
-        return bag;
-    }
-
-    public boolean getIntegrityOK()
-    {
-        return integrityOK;
-    }
-
     public int getCurrentSize()
     {
         return numberOfEntries;
