@@ -30,6 +30,8 @@ public class bagDriver
         System.out.print("Difference of Bags Two and One: ");
         leftOver2.displayBag();
 
+        System.out.println();
+
         BagInterface<String> bagThree = new LinkedBag<>();
         String[] bagThreeContents = {"a", "b", "c"};
         bagThree.add(bagThreeContents);

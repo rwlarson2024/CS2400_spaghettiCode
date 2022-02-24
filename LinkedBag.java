@@ -191,10 +191,11 @@ public class LinkedBag<T> implements BagInterface<T>
 
     public void displayBag()
     {
-        Object[] temp = this.toArray();
-        for (int index = 0; index < temp.length; index++)
+        Node<T> currentNode = firstNode;
+        while (currentNode != null)
         {
-            System.out.print(temp[index] + " ");
+            System.out.print(currentNode.getData() + " ");
+            currentNode = currentNode.getNextNode();
         }
         System.out.println();
     }
