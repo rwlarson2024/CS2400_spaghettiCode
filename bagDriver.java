@@ -24,11 +24,11 @@ public class bagDriver
 
         BagInterface<String> bagThree = new LinkedBag<>();
         String[] bagThreeContents = {"a", "b", "c"};
-        bagOne.add(bagThreeContents);
+        bagThree.add(bagThreeContents);
             
         BagInterface<String> bagFour = new LinkedBag<>();
         String[] bagFourContents = {"b", "b", "d", "e"};
-        bagTwo.add(bagFourContents);
+        bagFour.add(bagFourContents);
     
         everything = bagThree.union(bagFour);
         everything.displayBag();
