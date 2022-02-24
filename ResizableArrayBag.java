@@ -51,7 +51,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     }
 
     public boolean isFull()
-    {
+    {   
         return numberOfEntries == bag.length;
     }
 	

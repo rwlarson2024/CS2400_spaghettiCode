@@ -21,28 +21,25 @@ public class bagDriver
 
         BagInterface<String> leftOver2 = bagTwo.difference(bagOne);
         leftOver2.displayBag();
-    }
-    public static void main(String[] args) 
-    {
-        BagInterface<String> bagOne = new LinkedBag<>();
-        String[] bagOneContents = {"a", "b", "c"};
-        bagOne.add(bagOneContents);
+
+        BagInterface<String> bagThree = new LinkedBag<>();
+        String[] bagThreeContents = {"a", "b", "c"};
+        bagOne.add(bagThreeContents);
             
-        BagInterface<String> bagTwo = new LinkedBag<>();
-        String[] bagTwoContents = {"b", "b", "d", "e"};
-        bagTwo.add(bagTwoContents);
+        BagInterface<String> bagFour = new LinkedBag<>();
+        String[] bagFourContents = {"b", "b", "d", "e"};
+        bagTwo.add(bagFourContents);
     
-        BagInterface<String> everything = bagOne.union(bagTwo);
+        everything = bagThree.union(bagFour);
         everything.displayBag();
     
-        BagInterface<String> commonItems = bagOne.intersection(bagTwo);
+        commonItems = bagThree.intersection(bagFour);
         commonItems.displayBag();
             
-        BagInterface<String> leftOver1 = bagOne.difference(bagTwo);
+        leftOver1 = bagThree.difference(bagFour);
         leftOver1.displayBag();
     
-        BagInterface<String> leftOver2 = bagTwo.difference(bagOne);
+        leftOver2 = bagFour.difference(bagThree);
         leftOver2.displayBag();
     }
-
 }
