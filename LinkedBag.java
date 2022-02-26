@@ -1,5 +1,4 @@
-//Initial commit 
-//Can this code work for me?
+
 public class LinkedBag<T> implements BagInterface<T> 
 {
     private Node<T> firstNode;
@@ -203,18 +202,6 @@ public class LinkedBag<T> implements BagInterface<T>
     public BagInterface<T> union(BagInterface<T> other)
     {
         LinkedBag<T> tempBag = new LinkedBag<>();
-        /*
-        T[] temp = other.toArray();
-        for (T entry : temp) 
-        {
-            tempBag.add(entry);
-        }
-        temp = this.toArray();
-        for (T entry : temp) 
-        {
-            tempBag.add(entry);
-        }
-        */
         LinkedBag<T> castedOther = (LinkedBag<T>) other;
         Node<T> currentNode = castedOther.firstNode;
         while (currentNode != null)
@@ -237,17 +224,6 @@ public class LinkedBag<T> implements BagInterface<T>
         BagInterface<T> tempBag = new LinkedBag<>();
         LinkedBag<T> castedOther = (LinkedBag<T>) other;
         BagInterface<T> copiedBag = new LinkedBag<>(castedOther);
-        /*
-        T[] temp = this.toArray();
-        for (T entry : temp) 
-        {
-            if (copiedBag.contains(entry))
-            {
-                tempBag.add(entry);
-                copiedBag.remove(entry);
-            }
-        }
-        */
         Node<T> currentNode = this.firstNode;
         while (currentNode != null)
         {
@@ -266,18 +242,6 @@ public class LinkedBag<T> implements BagInterface<T>
         BagInterface<T> tempBag = new LinkedBag<>();
         LinkedBag<T> castedOther = (LinkedBag<T>) other;
         BagInterface<T> copiedBag = new LinkedBag<>(castedOther);
-        /*
-        T[] temp = this.toArray();
-        for (T entry : temp) 
-        {
-            if (copiedBag.contains(entry))
-            {
-                copiedBag.remove(entry);
-                continue;
-            }
-            tempBag.add(entry);
-        }
-        */
         Node<T> currentNode = this.firstNode;
         while (currentNode != null)
         {
