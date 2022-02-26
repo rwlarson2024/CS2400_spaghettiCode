@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+/** A test of several methods as defined in the class ResizableArrayBag. */
 public class ArrayBagTest
 {
     BagInterface<String> bagOne = new ResizableArrayBag<>(4);
