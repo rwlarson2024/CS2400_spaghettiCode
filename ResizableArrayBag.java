@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 public class ResizableArrayBag<T> implements BagInterface<T>
 {
     private T[] bag;
@@ -89,7 +88,9 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public void checkCapacity(int capacity)
     {
         if (capacity > MAX_CAPACITY)
-         throw new IllegalStateException("Attempt to create a bag whose capacity exeeds allowed maximum of " + MAX_CAPACITY);
+         throw new IllegalStateException("Attempt to create a bag whose capacity" 
+                                         + "exeeds allowed maximum of " 
+                                         + MAX_CAPACITY);
     }
 
 	public T remove()
