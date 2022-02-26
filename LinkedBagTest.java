@@ -1,26 +1,75 @@
 //Commiting on 2/22/2022
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
 public class LinkedBagTest 
 {
-    public static void main(String[] args) 
+    BagInterface<String> bagOne = new LinkedBag<>();
+    String[] bagOneContents = {"a", "b", "b", "c"};
+
+    @Test
+    public void testIsEmpty()
     {
-        BagInterface<String> bagOne = new LinkedBag<>();
-        String[] bagOneContents = {"a", "b", "c"};
+        assertEquals(true, bagOne.isEmpty());
+    }
+
+    @Test
+    public void testAdd()
+    {
+        assertEquals(true, bagOne.add(bagOneContents));
+    }
+
+    @Test
+    public void testRemove()
+    {
         bagOne.add(bagOneContents);
-            
-        BagInterface<String> bagTwo = new LinkedBag<>();
-        String[] bagTwoContents = {"b", "b", "d", "e"};
-        bagTwo.add(bagTwoContents);
-    
-        BagInterface<String> everything = bagOne.union(bagTwo);
-        everything.displayBag();
-    
-        BagInterface<String> commonItems = bagOne.intersection(bagTwo);
-        commonItems.displayBag();
-            
-        BagInterface<String> leftOver1 = bagOne.difference(bagTwo);
-        leftOver1.displayBag();
-    
-        BagInterface<String> leftOver2 = bagTwo.difference(bagOne);
-        leftOver2.displayBag();
-    }    
+        assertEquals("c", bagOne.remove());
+    }
+
+    @Test
+    public void testRemoveEntry()
+    {
+        bagOne.add(bagOneContents);
+        assertEquals(true, bagOne.remove("b"));
+    }
+
+    @Test
+    public void testGetCurrentSize()
+    {
+        bagOne.add(bagOneContents);
+        assertEquals(4, bagOne.getCurrentSize());
+    }
+
+    @Test
+    public void testClear()
+    {
+        bagOne.clear();
+    }
+
+    @Test
+    public void testGetFrequencyOf()
+    {
+        bagOne.add(bagOneContents);
+        assertEquals(2, bagOne.getFrequencyOf("b"));
+    }
+
+    @Test
+    public void testContains()
+    {
+        bagOne.add(bagOneContents);
+        assertEquals(false, bagOne.contains("d"));
+    }
+
+    @Test
+    public void testToArray()
+    {
+        bagOne.toArray();
+    }
+
+    @Test
+    public void testDisplayBag()
+    {
+        bagOne.displayBag();
+    }
 }
