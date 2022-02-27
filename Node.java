@@ -1,5 +1,4 @@
-//initial commit
-
+/** Class Node, file can be deleted. */
 class Node<T>
 {
     private T data;

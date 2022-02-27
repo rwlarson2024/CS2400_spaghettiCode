@@ -52,7 +52,7 @@ public interface BagInterface<T>
                 Note: If the bag is empty, the returned array is empty. */
 	public T[] toArray();
 
-	/** Displays the bag array */
+	/** Displays the objects in a bag. */
 	public void displayBag();
 
 	/** Creates a union of two bag objects.
