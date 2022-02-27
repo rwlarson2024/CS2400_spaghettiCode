@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //Commiting on 2/22/2022
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -32,14 +31,13 @@ public class LinkedBagTest
         assertEquals(true, bagOne.remove("c"));
         assertEquals(false, bagOne.remove("d"));
     }
+    @Test
+    public void testContains()
+    {
+        bagOne.add(bagOneContents);
+        assertEquals(true, bagOne.contains("a"));
+        assertEquals(true, bagOne.contains("b"));
+        assertEquals(false, bagOne.contains("y"));
+        assertEquals(false, bagOne.contains("z"));
+    }
 }
-=======
-import static org.junit.Assert.*;
-import org.junit.Test;
-
-/** A test of several methods as defined in the class LinkedBag. */
-public class LinkedBagTest 
-{
- 
-}
->>>>>>> 4adb446f06a530a6e57c803475a1fda232b9a581
