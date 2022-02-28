@@ -45,30 +45,30 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     }
 
     /** Gets the current number of entries in the array bag.
-		@return  The integer number of entries currently in the bag. */
+     @return  The integer number of entries currently in the bag. */
     public int getCurrentSize()
     {
         return numberOfEntries;
     }
-	
+
     /** Sees whether the array bag is empty.
-        @return  True if the bag is empty, or false if not. */
-	public boolean isEmpty()
+     @return  True if the bag is empty, or false if not. */
+    public boolean isEmpty()
     {
         return numberOfEntries == 0;
     }
 
     /** Sees whether the array bag is full.
-        @return  True if the bag is full, or false if not. */
+     @return  True if the bag is full, or false if not. */
     public boolean isFull()
-    {   
+    {
         return numberOfEntries == bag.length;
     }
-	
+
     /** Adds a new entry to the array bag.
-        @param newEntry  The object to be added as a new entry
-        @return  True if the addition is successful, or false if not. */
-	public boolean add(T newEntry)
+     @param newEntry  The object to be added as a new entry
+     @return  True if the addition is successful, or false if not. */
+    public boolean add(T newEntry)
     {
         checkIntegrity();
         boolean result = true;
@@ -77,13 +77,13 @@ public class ResizableArrayBag<T> implements BagInterface<T>
             doubleCapacity();
         }
         bag[numberOfEntries] = newEntry;
-        numberOfEntries++;  
+        numberOfEntries++;
         return result;
     }
 
     /** Adds contents of an array to the array bag.
-	    @param contents  The objects to be added as new entries.
-	    @return  True if the addition is successful, or false if not. */
+     @param contents  The objects to be added as new entries.
+     @return  True if the addition is successful, or false if not. */
     public boolean add(T[] contents)
     {
         checkIntegrity();
@@ -96,7 +96,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     }
 
     /** Doubles the capacity of the array bag 
-        if attempting to add a new entry to a full bag. */
+     if attempting to add a new entry to a full bag. */
     public void doubleCapacity()
     {
         int newLength = 2 * bag.length;
@@ -108,15 +108,15 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     public void checkCapacity(int capacity)
     {
         if (capacity > MAX_CAPACITY)
-         throw new IllegalStateException("Attempt to create a bag whose capacity" 
-                                         + " exeeds allowed maximum of " 
-                                         + MAX_CAPACITY);
+            throw new IllegalStateException("Attempt to create a bag whose capacity"
+                    + " exeeds allowed maximum of "
+                    + MAX_CAPACITY);
     }
 
     /** Removes one unspecified entry from the array bag, if possible.
-        @return  Either the removed entry, if the removal.
-                 was successful, or null. */
-	public T remove()
+     @return  Either the removed entry, if the removal.
+     was successful, or null. */
+    public T remove()
     {
         checkIntegrity();
         T result = removeEntry(numberOfEntries - 1);
@@ -124,19 +124,19 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     }
 
     /** Removes one occurrence of a given entry from the array bag, if possible.
-        @param anEntry  The entry to be removed.
-        @return  True if the removal was successful, or false if not. */
-   	public boolean remove(T anEntry)
+     @param anEntry  The entry to be removed.
+     @return  True if the removal was successful, or false if not. */
+    public boolean remove(T anEntry)
     {
         checkIntegrity();
         int index = getIndexOf(anEntry);
-        T result = removeEntry(index);         
+        T result = removeEntry(index);
         return anEntry == result;
     }
 
     /** Removes the entry at a given index within the array bag.
-        @param givenIndex  The given index of the array bag.
-        @return  The entry at a given index, or null otherwise. */
+     @param givenIndex  The given index of the array bag.
+     @return  The entry at a given index, or null otherwise. */
     public T removeEntry(int givenIndex)
     {
         T result = null;
@@ -151,8 +151,8 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     }
 
     /** Locates a given entry within the array bag, if possible.
-        @param anEntry  The entry to get the location of.
-        @return  The index of the entry if located, or -1 otherwise. */
+     @param anEntry  The entry to get the location of.
+     @return  The index of the entry if located, or -1 otherwise. */
     public int getIndexOf(T anEntry)
     {
         int where = -1;
@@ -166,10 +166,10 @@ public class ResizableArrayBag<T> implements BagInterface<T>
                 where = index;
             }
             index++;
-        } 
+        }
         return where;
     }
-	
+
     /** Removes all entries from the array bag. */
     public void clear()
     {
@@ -178,11 +178,11 @@ public class ResizableArrayBag<T> implements BagInterface<T>
             remove();
         }
     }
-	
+
     /** Counts the number of times a given entry appears in the array bag.
-		@param anEntry  The entry to be counted.
-		@return  The number of times the given entry appears in the bag. */
-	public int getFrequencyOf(T anEntry)
+     @param anEntry  The entry to be counted.
+     @return  The number of times the given entry appears in the bag. */
+    public int getFrequencyOf(T anEntry)
     {
         checkIntegrity();
         int counter = 0;
@@ -195,20 +195,20 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         }
         return counter;
     }
-	
+
     /** Tests whether the array bag contains a given entry.
-		@param anEntry  The entry to find.
-		@return  True if the bag contains the given entry, or false if not. */
-	public boolean contains(T anEntry)
+     @param anEntry  The entry to find.
+     @return  True if the bag contains the given entry, or false if not. */
+    public boolean contains(T anEntry)
     {
         checkIntegrity();
         return getIndexOf(anEntry) >= 0;
     }
 
     /** Retrieves all entries that are in the array bag.
-		@return  A newly allocated array of all the entries in the bag.
-                 Note: If the bag is empty, the returned array is empty. */
-	public T[] toArray()
+     @return  A newly allocated array of all the entries in the bag.
+     Note: If the bag is empty, the returned array is empty. */
+    public T[] toArray()
     {
         @SuppressWarnings("unchecked")
         T[] result = (T[])new Object[numberOfEntries];
@@ -222,8 +222,8 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     /** Checks the integrity of the array bag that it is properly created. */
     public void checkIntegrity()
     {
-      if (!integrityOK)
-         throw new SecurityException("ArrayBag object is corrupt.");
+        if (!integrityOK)
+            throw new SecurityException("ArrayBag object is corrupt.");
     }
 
     /** Displays the objects in the array bag. */
@@ -236,36 +236,36 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         }
         System.out.println();
     }
-    
+
     /** Creates a union of two bag objects.
-		@param other  The bag to be combined with.
-		@return  A newly allocated object of all the entries in the union bag. */
+     @param other  The bag to be combined with.
+     @return  A newly allocated object of all the entries in the union bag. */
     public BagInterface<T> union(BagInterface<T> other)
     {
         ResizableArrayBag<T> tempBag = new ResizableArrayBag<>();
         T[] temp = this.toArray();
-        for (T entry : temp) 
+        for (T entry : temp)
         {
             tempBag.add(entry);
         }
         temp = other.toArray();
-        for (T entry : temp) 
+        for (T entry : temp)
         {
             tempBag.add(entry);
         }
         return tempBag;
     }
-    
+
     /** Creates an intersection of two bag objects.
-		@param other  The bag to be overlapped with.
-		@return  A newly allocated object of all the entries in the intersection bag. */
+     @param other  The bag to be overlapped with.
+     @return  A newly allocated object of all the entries in the intersection bag. */
     public BagInterface<T> intersection(BagInterface<T> other)
     {
         BagInterface<T> tempBag = new ResizableArrayBag<>();
         ResizableArrayBag<T> castedOther = (ResizableArrayBag<T>) other;
         BagInterface<T> copiedBag = new ResizableArrayBag<>(castedOther);
         T[] temp = this.toArray();
-        for (T entry : temp) 
+        for (T entry : temp)
         {
             if (copiedBag.contains(entry))
             {
@@ -275,17 +275,17 @@ public class ResizableArrayBag<T> implements BagInterface<T>
         }
         return tempBag;
     }
-   
+
     /** Creates a difference of two bag objects.
-		@param other  The object to be used for the difference.
-		@return  A newly allocated object of all the entries in the difference bag. */
+     @param other  The object to be used for the difference.
+     @return  A newly allocated object of all the entries in the difference bag. */
     public BagInterface<T> difference(BagInterface<T> other)
     {
         BagInterface<T> tempBag = new ResizableArrayBag<>();
         ResizableArrayBag<T> castedOther = (ResizableArrayBag<T>) other;
         BagInterface<T> copiedBag = new ResizableArrayBag<>(castedOther);
         T[] temp = this.toArray();
-        for (T entry : temp) 
+        for (T entry : temp)
         {
             if (copiedBag.contains(entry))
             {
