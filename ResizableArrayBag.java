@@ -109,7 +109,7 @@ public class ResizableArrayBag<T> implements BagInterface<T>
     {
         if (capacity > MAX_CAPACITY)
             throw new IllegalStateException("Attempt to create a bag whose capacity"
-                    + " exeeds allowed maximum of "
+                    + " exceeds allowed maximum of "
                     + MAX_CAPACITY);
     }
 
