@@ -302,4 +302,7 @@ public class LinkedBag<T> implements BagInterface<T>
         } 
         return tempBag;
     }
+
+    public void getIndexOf(String string) {
+    }
 }
