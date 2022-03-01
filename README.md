@@ -1,4 +1,4 @@
-# CS2400_spaghettiCode
+# CS2400_spaghettiCode - Project 0
 A repository for the group projects in CS2400.03. The Group includes : Ryan Larson, Allan Chan, And Estevan Delgado. 
 Group contribution: 
 
