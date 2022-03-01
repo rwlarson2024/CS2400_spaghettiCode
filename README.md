@@ -1,6 +1,7 @@
 # CS2400_spaghettiCode
 A repository for the group projects in CS2400.03. The Group includes : Ryan Larson, Allan Chan, And Estevan Delgado. 
 Group contribution: 
+
 Allan Chan provided the driving force on the project and started with the creation of all the files and provided the base of each method that the code call on. He has also 
 provided help with getting and understanding Java unit test frameworks and gave the other members a guiding hand on the execution of testing.
 
