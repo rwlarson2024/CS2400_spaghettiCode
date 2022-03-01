@@ -38,31 +38,13 @@ public class LinkedBagTest
         bagOne.add(bagOneContents);
         assertEquals(true, bagOne.contains("a"));
         assertEquals(true, bagOne.contains("b"));
-        assertEquals(false, bagOne.contains("y"));
-        assertEquals(false, bagOne.contains("z"));
-    }
-    @Test
-    public void testClass()
-    {
-        bagOne.getClass();
-    }
-    @Test
-    public void testEquals()
-    {
-        assertEquals(false, bagOne.equals(bagTwo));
+        assertEquals(false, bagOne.contains("d"));
+        assertEquals(false, bagOne.contains("f"));
     }
     @Test
     public void testDisplay()
     {
         bagOne.displayBag();
         bagTwo.displayBag();
-    }
-    @Test
-    public void testGetIndexOf()
-    {
-        bagOne.add(bagOneContents);
-        ((LinkedBag<String>)bagOne).getIndexOf("a");
-        ((LinkedBag<String>)bagOne).getIndexOf("b");
-        ((LinkedBag<String>)bagOne).getIndexOf("c");
     }
 }
