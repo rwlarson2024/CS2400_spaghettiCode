@@ -12,4 +12,4 @@ Together the group implemented Java unit test framework within the ResizeableArr
 
 Link to our code video : 
 
-Link to our Javadoc start page : 
+Link to our Javadoc start page : https://index-mocha-two.vercel.app/index-files/index-1.html
