@@ -13,6 +13,6 @@ He provided help with writing and running different tests on the linked bag meth
 
 Together the group implemented Java unit test framework, JUnit, within the ResizeableArrayTest file and the LinkBagTest file. 
 
-Link to our code video : 
+Link to our code video : https://youtu.be/thB0T_ZWhIo
 
 Link to our Javadoc start page : https://index-mocha-two.vercel.app/allclasses-index.html
