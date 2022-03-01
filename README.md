@@ -15,4 +15,4 @@ Together the group implemented Java unit test framework, JUnit, within the Resiz
 
 Link to our code video : 
 
-Link to our Javadoc start page : https://index-mocha-two.vercel.app/index-files/index-1.html
+Link to our Javadoc start page : https://index-mocha-two.vercel.app/allclasses-index.html
