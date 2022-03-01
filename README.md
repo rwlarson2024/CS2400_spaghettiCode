@@ -11,7 +11,7 @@ in begining stages of the project. He also helped created the Resizeable Array b
 Estevan help by providing the test cases for the linked bag array and creating the different test cases. He help with the debugging of our code and learned with our project.
 He provided help with writing and running different tests on the linked bag method.
 
-Together the group implemented Java unit test framework within the ResizeableArrayTest file and the LinkBagTest file. 
+Together the group implemented Java unit test framework, JUnit, within the ResizeableArrayTest file and the LinkBagTest file. 
 
 Link to our code video : 
 
