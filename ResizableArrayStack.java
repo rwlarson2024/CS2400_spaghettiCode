@@ -34,8 +34,15 @@ public class ResizableArrayStack<T> implements StackInterface<T>
     {
         checkIntegrity();
         ensureCapacity();
-        stack[topIndex + 1] = newEntry;
-        topIndex++;
+        String castedNewEntry = (String) newEntry;
+        for (int index = 0; index < castedNewEntry.length(); index++)
+        {
+            if (castedNewEntry.substring(index, index + 1) != " ")
+            {
+                stack[topIndex + 1] = (T) castedNewEntry.substring(index, index + 1);
+                topIndex++;
+            }
+        }
     }
     
     public T pop()
