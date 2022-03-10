@@ -116,7 +116,6 @@ public class ResizableArrayStack<T> implements StackInterface<T>
         ResizableArrayStack<T> operatorStack = new ResizableArrayStack<>();
         infix = infix.replaceAll("\\s", "");
         String postfix = "";
-        T topOperator;
         for (int index = 0; index < infix.length(); index++)
         {
             switch(infix.substring(index, index + 1))
@@ -129,7 +128,7 @@ public class ResizableArrayStack<T> implements StackInterface<T>
                 break;
 
                 case "^": case "+": case "-": case "*": case "/":
-                if (!operatorStack.isEmpty() && precedenceOf(infix.substring(index, index + 1)) <= precedenceOf((String) operatorStack.peek()))
+                while (!operatorStack.isEmpty() && precedenceOf(infix.substring(index, index + 1)) <= precedenceOf((String) operatorStack.peek()))
                 {
                     postfix += operatorStack.peek();
                     operatorStack.pop();
@@ -142,12 +141,10 @@ public class ResizableArrayStack<T> implements StackInterface<T>
                 break;
 
                 case ")":
-                topOperator = operatorStack.peek();
-                while (!operatorStack.isEmpty() && !topOperator.equals("("))
+                while (!operatorStack.isEmpty() && !operatorStack.peek().equals("("))
                 {
-                    postfix += topOperator;
+                    postfix += operatorStack.peek();
                     operatorStack.pop();
-                    topOperator = operatorStack.peek();
                 }
                 operatorStack.pop();
                 break;
