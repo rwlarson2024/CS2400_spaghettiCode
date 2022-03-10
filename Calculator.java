@@ -2,12 +2,9 @@ public class Calculator
 {
     public static void main(String[] args)
     {
-        StackInterface<String> stack = new ResizableArrayStack<>();
-        stack.push("a+b");
-        System.out.print(stack.peek());
-        stack.pop();
-        System.out.print(stack.peek());
-        stack.pop();
-        System.out.print(stack.peek());
+        ResizableArrayStack<String> stack = new ResizableArrayStack<>();
+        System.out.println(stack.convertToPostfix("a*b+c"));
+        System.out.println(stack.convertToPostfix("a+b*c"));
+        System.out.println(stack.convertToPostfix("a*(b+c)")); // Need debugging
     }
 }

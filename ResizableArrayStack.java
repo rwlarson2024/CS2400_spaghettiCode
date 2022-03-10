@@ -34,15 +34,8 @@ public class ResizableArrayStack<T> implements StackInterface<T>
     {
         checkIntegrity();
         ensureCapacity();
-        String castedNewEntry = (String) newEntry;
-        for (int index = 0; index < castedNewEntry.length(); index++)
-        {
-            if (castedNewEntry.substring(index, index + 1) != " ")
-            {
-                stack[topIndex + 1] = (T) castedNewEntry.substring(index, index + 1);
-                topIndex++;
-            }
-        }
+        stack[topIndex + 1] = newEntry;
+        topIndex++;
     }
     
     public T pop()
@@ -63,6 +56,7 @@ public class ResizableArrayStack<T> implements StackInterface<T>
 
     public T peek()
     {
+        checkIntegrity();
         if (isEmpty())
         {
             throw new EmptyStackException();
@@ -114,5 +108,71 @@ public class ResizableArrayStack<T> implements StackInterface<T>
     public void evaluatePostfix()
     {
         System.out.print("Evaluate postfix method");
+    }
+
+    @SuppressWarnings("unchecked")
+    public String convertToPostfix(String infix)
+    {
+        ResizableArrayStack<T> operatorStack = new ResizableArrayStack<>();
+        infix = infix.replaceAll("\\s", "");
+        String postfix = "";
+        for (int index = 0; index < infix.length(); index++)
+        {
+            switch(infix.substring(index, index + 1))
+            {
+                case "a": case "b": case "c": case "d": case "e": case "f": case "g":
+                case "h": case "i": case "j": case "k": case "l": case "m": case "n":
+                case "o": case "p": case "q": case "r": case "s": case "t":
+                case "u": case "v": case "w": case "x": case "y": case "z":
+                postfix += infix.substring(index, index + 1);
+                break;
+
+                case "^": case "+": case "-": case "*": case "/":
+                if (!operatorStack.isEmpty() && precedenceOf(infix.substring(index, index + 1)) <= precedenceOf((String) operatorStack.peek()))
+                {
+                    postfix += operatorStack.peek();
+                    operatorStack.pop();
+                }
+                operatorStack.push((T) infix.substring(index, index + 1));
+                break;
+
+                case "(":
+                operatorStack.push((T) infix.substring(index, index + 1));
+                break;
+
+                case ")":
+                while (!operatorStack.isEmpty() && operatorStack.peek() != "(")
+                {
+                    postfix += operatorStack.peek();
+                    operatorStack.pop();
+                }
+                operatorStack.pop();
+                break;
+
+                default:
+                break;
+            }
+        }
+        while (!operatorStack.isEmpty())
+        {
+            postfix += operatorStack.peek();
+            operatorStack.pop();
+        }
+        return postfix;
+    }
+
+    private int precedenceOf(String operator)
+    {
+        switch(operator)
+        {
+            case "^":
+            return 2;
+            case "*": case "/":
+            return 1;
+            case "+": case "-":
+            return 0;
+            default:
+            return -1;
+        }
     }
 }
