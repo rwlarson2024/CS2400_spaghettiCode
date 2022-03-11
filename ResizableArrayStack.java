@@ -105,10 +105,70 @@ public class ResizableArrayStack<T> implements StackInterface<T>
             throw new SecurityException("Stack object is corrupt.");
     }
 
-    public void evaluatePostfix()
+    @SuppressWarnings("unchecked")
+public int evaluatePostfix(String postfix)
+{
+    ResizableArrayStack<T> valueStack = new ResizableArrayStack<>();
+    postfix = postfix.replaceAll("\\s", "");
+    int operandOne, operandTwo;
+    int result = 0;
+    for (int index = 0; index < postfix.length(); index++)
     {
-        System.out.print("Evaluate postfix method");
+        switch(postfix.substring(index, index + 1))
+        {
+            case "a":
+            valueStack.push((T)"2");
+            break;
+                
+            case "b":
+            valueStack.push((T)"3");
+            break;
+
+            case "c":
+            valueStack.push((T)"4");
+            break;
+
+            case "d":
+            valueStack.push((T)"5");
+            break;
+
+            case "e":
+            valueStack.push((T)"6");
+            break;
+
+            case "+": case "-": case "*": case "/": case "^":
+            operandTwo = Integer.parseInt((String)valueStack.pop()); 
+            operandOne = Integer.parseInt((String)valueStack.pop());
+            switch (postfix.substring(index, index + 1))
+            {
+                case "+":
+                result = operandOne + operandTwo;
+                break;
+                case "-":
+                result = operandOne - operandTwo;
+                break;
+                case "*":
+                result = operandOne * operandTwo;
+                break;
+                case "/":
+                result = operandOne / operandTwo;
+                break;
+                case "^":
+                result = (int) Math.pow(operandOne, operandTwo);
+                break;
+                default:
+                break;
+            }
+            valueStack.push((T)Integer.toString(result));
+            break;
+
+            default:
+            break;
+        }
     }
+    return Integer.parseInt((String)valueStack.peek());
+}
+
 
     @SuppressWarnings("unchecked")
     public String convertToPostfix(String infix)
