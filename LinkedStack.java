@@ -1,13 +1,14 @@
-import java.util.*;
 import java.util.EmptyStackException;
+
 public class LinkedStack<T> implements StackInterface<T>
 {
     private Node<T> topNode;
-    private int topIndex;
+    
     public LinkedStack()
     {
         topNode = null;
     }
+
     private class Node<T>
     {
         private T data;
@@ -39,19 +40,20 @@ public class LinkedStack<T> implements StackInterface<T>
         }
     }
 
-    
     public void push(T newEntry)
     {
-        Node newNode = new Node(newEntry, topNode);
+        Node<T> newNode = new Node<>(newEntry, topNode);
         topNode = newNode;
         //topNode = new Node(newEntry, topNode); // alt code
-    }// end push
+    }
+
     public T pop()
     {
         T top = peek();
         topNode = topNode.getNextNode();
         return top;    
     }
+
     public T peek()
     {
         if(isEmpty())
@@ -59,78 +61,17 @@ public class LinkedStack<T> implements StackInterface<T>
         else
             return topNode.getData();
     }
+
     public boolean isEmpty()
     {
         return topNode == null;
     }
+
     public void clear()
     {
         topNode = null;
     }
 
-    @SuppressWarnings("unchecked")
-    public int evaluatePostfix(String postfix)
-    {
-        LinkedStack<T> valueStack = new LinkedStack<>();
-        postfix = postfix.replaceAll("\\s", "");
-        int operandOne, operandTwo;
-        int result = 0;
-        for (int index = 0; index < postfix.length(); index++)
-        {
-            switch(postfix.substring(index, index + 1))
-            {
-                case "a":
-                valueStack.push((T)"2");
-                break;
-                    
-                case "b":
-                valueStack.push((T)"3");
-                break;
-    
-                case "c":
-                valueStack.push((T)"4");
-                break;
-    
-                case "d":
-                valueStack.push((T)"5");
-                break;
-    
-                case "e":
-                valueStack.push((T)"6");
-                break;
-    
-                case "+": case "-": case "*": case "/": case "^":
-                operandTwo = Integer.parseInt((String)valueStack.pop()); 
-                operandOne = Integer.parseInt((String)valueStack.pop());
-                switch (postfix.substring(index, index + 1))
-                {
-                    case "+":
-                    result = operandOne + operandTwo;
-                    break;
-                    case "-":
-                    result = operandOne - operandTwo;
-                    break;
-                    case "*":
-                    result = operandOne * operandTwo;
-                    break;
-                    case "/":
-                    result = operandOne / operandTwo;
-                    break;
-                    case "^":
-                    result = (int) Math.pow(operandOne, operandTwo);
-                    break;
-                    default:
-                    break;
-                }
-                valueStack.push((T)Integer.toString(result));
-                break;
-    
-                default:
-                break;
-            }
-        }
-        return Integer.parseInt((String)valueStack.peek());
-    }
     @SuppressWarnings("unchecked")
     public String convertToPostfix(String infix)
     {

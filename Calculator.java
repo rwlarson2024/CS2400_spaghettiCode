@@ -2,12 +2,15 @@ public class Calculator
 {
     public static void main(String[] args)
     {
-        ResizableArrayStack<String> stack = new ResizableArrayStack<>();
+        LinkedStack<String> stackOne = new LinkedStack<>();
+        String infix = "a*b/(c-a)+d*e";
 
-        System.out.println(stack.convertToPostfix("a*b+c")); // ab*c+
-        System.out.println(stack.convertToPostfix("a+b*c")); // abc*+
-        System.out.println(stack.convertToPostfix("a*(b+c)")); // abc+*
-        
-        System.out.println(stack.convertToPostfix("a*b/(c-a)+d*e")); // ab*ca-/de*+
+        String postfix = stackOne.convertToPostfix(infix);
+        System.out.println(postfix); // ab*ca-/de*+
+
+        ResizableArrayStack<String> stackTwo = new ResizableArrayStack<>();
+
+        int evaluation = stackTwo.evaluatePostfix(postfix);
+        System.out.println(evaluation); // 33
     }
 }
