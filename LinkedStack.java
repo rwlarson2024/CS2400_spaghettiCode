@@ -1,14 +1,17 @@
 import java.util.EmptyStackException;
 
+/** Class for creating a LinkedStack object. */
 public class LinkedStack<T> implements StackInterface<T>
 {
     private Node<T> topNode;
     
+    /** Default constructor */
     public LinkedStack()
     {
         topNode = null;
     }
 
+    /** Private class for creating nodes */
     private class Node<T>
     {
         private T data;
@@ -40,6 +43,8 @@ public class LinkedStack<T> implements StackInterface<T>
         }
     }
 
+    /** Adds a new entry to the top of the linked stack.
+        @param newEntry  An object to be added to the stack. */
     public void push(T newEntry)
     {
         Node<T> newNode = new Node<>(newEntry, topNode);
@@ -47,6 +52,9 @@ public class LinkedStack<T> implements StackInterface<T>
         //topNode = new Node(newEntry, topNode); // alt code
     }
 
+    /** Removes and returns the linked stack's top entry.
+        @return  The object at the top of the stack. 
+        Note: May throw EmptyStackException if stack is empty. */
     public T pop()
     {
         T top = peek();
@@ -54,6 +62,9 @@ public class LinkedStack<T> implements StackInterface<T>
         return top;    
     }
 
+    /** Retrieves the linked stack's top entry.
+        @return  The object at the top of the stack.
+        @throws  EmptyStackException if the stack is empty. */
     public T peek()
     {
         if(isEmpty())
@@ -62,23 +73,29 @@ public class LinkedStack<T> implements StackInterface<T>
             return topNode.getData();
     }
 
+    /** Detects whether the linked stack is empty.
+        @return  True if the stack is empty. */
     public boolean isEmpty()
     {
         return topNode == null;
     }
 
+    /** Removes all entries from the linked stack. */
     public void clear()
     {
         topNode = null;
     }
 
+    /** Converts an infix expression into a postfix expression.
+        @param infix  A string that is in the infix expression notation.
+        @return  The string of the postfix expression. */
     @SuppressWarnings("unchecked")
     public String convertToPostfix(String infix)
     {
-        LinkedStack<T> operatorStack = new LinkedStack<>();
-        infix = infix.replaceAll("\\s", "");
+        LinkedStack<T> operatorStack = new LinkedStack<>(); // Operator stack
+        infix = infix.replaceAll("\\s", ""); // Removes any possible spaces
         String postfix = "";
-        for (int index = 0; index < infix.length(); index++)
+        for (int index = 0; index < infix.length(); index++) // Loops through each character of the infix expression
         {
             switch(infix.substring(index, index + 1))
             {
@@ -122,9 +139,12 @@ public class LinkedStack<T> implements StackInterface<T>
             postfix += operatorStack.peek();
             operatorStack.pop();
         }
-        return postfix;
+        return postfix; // Returns the postfix expression that was converted from an infix expression
     }
 
+    /** Returns the precedence of a math operator according to the order of operations.
+        @param operator  The math operator.
+        @return  The numerical precedence of the math operator. */
     private int precedenceOf(String operator)
     {
         switch(operator)

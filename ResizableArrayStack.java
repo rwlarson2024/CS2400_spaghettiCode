@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
+/** Class for creating a ResizableArrayStack object. */
 public class ResizableArrayStack<T> implements StackInterface<T>
 {
     private T[] stack;
@@ -9,6 +10,7 @@ public class ResizableArrayStack<T> implements StackInterface<T>
     private static final int DEFAULT_CAPACITY = 50;
     private static final int MAX_CAPACITY = 10000;
 
+    /** Default constructor */
     public ResizableArrayStack()
     {
         integrityOK = false;
@@ -19,6 +21,7 @@ public class ResizableArrayStack<T> implements StackInterface<T>
         integrityOK = true;
     }
 
+    /** Constructor with a given capacity */
     public ResizableArrayStack(int capacity)
     {
         integrityOK = false;
@@ -30,6 +33,8 @@ public class ResizableArrayStack<T> implements StackInterface<T>
         integrityOK = true;
     }
 
+    /** Adds a new entry to the top of the array stack.
+        @param newEntry  An object to be added to the stack. */
     public void push(T newEntry)
     {
         checkIntegrity();
@@ -38,6 +43,9 @@ public class ResizableArrayStack<T> implements StackInterface<T>
         topIndex++;
     }
     
+    /** Removes and returns the array stack's top entry.
+        @return  The object at the top of the stack. 
+        @throws  EmptyStackException if the stack is empty before the operation. */
     public T pop()
     {
         checkIntegrity();
@@ -54,6 +62,9 @@ public class ResizableArrayStack<T> implements StackInterface<T>
         }
     }
 
+    /** Retrieves the array stack's top entry.
+        @return  The object at the top of the stack.
+        @throws  EmptyStackException if the stack is empty. */
     public T peek()
     {
         checkIntegrity();
@@ -67,11 +78,14 @@ public class ResizableArrayStack<T> implements StackInterface<T>
         }
     }
 
+    /** Detects whether the array stack is empty.
+        @return  True if the stack is empty. */
     public boolean isEmpty()
     {
         return topIndex < 0;
     }
 
+    /** Removes all entries from the array stack. */
     public void clear()
     {
         while (topIndex > -1)
@@ -81,6 +95,7 @@ public class ResizableArrayStack<T> implements StackInterface<T>
         }
     }
 
+    /** Ensures that the capacity of the array stack can store enough added entries. */
     private void ensureCapacity()
     {
         if (topIndex >= stack.length - 1)
@@ -91,6 +106,7 @@ public class ResizableArrayStack<T> implements StackInterface<T>
         }
     }
 
+    /** Checks that the capacity does not exceed maximum capacity that is available. */
     public void checkCapacity(int capacity)
     {
         if (capacity > MAX_CAPACITY)
@@ -99,20 +115,24 @@ public class ResizableArrayStack<T> implements StackInterface<T>
                     + MAX_CAPACITY);
     }
 
+    /** Checks the integrity of the array stack that it is properly created. */
     public void checkIntegrity()
     {
         if (!integrityOK)
             throw new SecurityException("Stack object is corrupt.");
     }
 
+    /** Evaluates a postfix expression.
+        @param postfix  A string that is in the postfix expression notation.
+        @return  The numerical evaluation of the postfix expression. */
     @SuppressWarnings("unchecked")
     public int evaluatePostfix(String postfix)
     {
-        ResizableArrayStack<T> valueStack = new ResizableArrayStack<>();
-        postfix = postfix.replaceAll("\\s", "");
+        ResizableArrayStack<T> valueStack = new ResizableArrayStack<>(); // Operand stack
+        postfix = postfix.replaceAll("\\s", ""); // Removes any possible spaces
         int operandOne, operandTwo;
         int result = 0;
-        for (int index = 0; index < postfix.length(); index++)
+        for (int index = 0; index < postfix.length(); index++) // Loops through each character of the postfix expression
         {
             switch(postfix.substring(index, index + 1))
             {
@@ -142,8 +162,8 @@ public class ResizableArrayStack<T> implements StackInterface<T>
                 break;
 
                 case "+": case "-": case "*": case "/": case "^":
-                operandTwo = Integer.parseInt((String)valueStack.pop()); 
-                operandOne = Integer.parseInt((String)valueStack.pop());
+                operandTwo = Integer.parseInt((String)valueStack.pop()); // Casts a string type to a T type value,
+                operandOne = Integer.parseInt((String)valueStack.pop()); // then converts to integer
                 switch (postfix.substring(index, index + 1))
                 {
                     case "+":
@@ -171,6 +191,6 @@ public class ResizableArrayStack<T> implements StackInterface<T>
                 break;
             }
         }
-        return Integer.parseInt((String)valueStack.peek());
+        return Integer.parseInt((String)valueStack.peek()); // Returns the final numerical result of the postfix expression
     }
 }
