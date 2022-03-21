@@ -13,7 +13,7 @@ public class CalculatorTest
     public void testPush()
     {
         Stack.push("e");
-        assertEquals(Stack.peek(),"e");
+        assertEquals("e", Stack.peek() );
 
     }
     @Test
@@ -37,10 +37,5 @@ public class CalculatorTest
     public void testIsEmpty() 
     {
         assertTrue(Stack.isEmpty() );
-    }
-    @Test
-    public void checkIntegrity()
-    {
-        ((ResizableArrayStack<String>)Stack).checkIntegrity();
     }
 }
