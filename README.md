@@ -14,7 +14,3 @@ Adobe Premiere Pro.
 Javadoc's start page - https://project2-blush.vercel.app/allclasses-index.html
 
 Video link - 
-
-Repo link - https://github.com/rwlarson2024/CS2400_spaghettiCode
-
-Excel file - 
