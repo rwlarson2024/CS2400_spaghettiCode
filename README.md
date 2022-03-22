@@ -13,4 +13,4 @@ Adobe Premiere Pro.
 
 Javadoc's start page - https://project2-blush.vercel.app/allclasses-index.html
 
-Video link - https://youtu.be/YdEZhK8d-Oo
+Video link - https://youtu.be/PCAuJ2KedMo
