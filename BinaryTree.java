@@ -1,6 +1,6 @@
 // package TreePackage;
 
-public class BinaryTree 
+public class BinaryTree<T> implements BinaryTreeInterface<T>
 {
     
 }
