@@ -115,6 +115,23 @@ public class BinaryNode<T>
         return height;
     }
 
+    /** Retrieves the number of nodes in the subtree rooted at this node.
+        @return The number of nodes in the node's subtree. */
+    public int getNumberOfNodes_binaryNodeMethod() 
+    {
+        int leftNumber = 0;
+        int rightNumber = 0;
+        if (leftChild != null)
+        {
+            leftNumber = leftChild.getNumberOfNodes_binaryNodeMethod();
+        }
+        if (rightChild != null)
+        {
+            rightNumber = rightChild.getNumberOfNodes_binaryNodeMethod();
+        }
+        return 1 + leftNumber + rightNumber;
+    }
+
     /** Copies the subtree rooted at a node.
         @return The subtree of the node. */
     public BinaryNode<T> copy()
