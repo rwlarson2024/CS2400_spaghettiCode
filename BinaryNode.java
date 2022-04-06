@@ -93,7 +93,13 @@ public class BinaryNode<T>
     /** Prints all nodes of a subtree rooted at a BinaryNode object using post-order traversal. */
     public void postorderTraverse_binaryNodeMethod()
     {
-        
+        if(leftChild != null){
+            leftChild.postorderTraverse_binaryNodeMethod();
+        }
+        if(rightChild != null){
+            rightChild.postorderTraverse_binaryNodeMethod();
+        }
+        System.out.println(getData());
     }
 
     /** Calls getHeight_binaryNodeMethod(BinaryNode<T> node) method
