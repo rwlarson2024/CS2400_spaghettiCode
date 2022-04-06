@@ -141,4 +141,18 @@ public class BinaryNode<T>
         }
         return newRoot;
     }
+
+    public void postorderTraverse_binaryNodeMethod() {
+        if(leftChild != null){
+            leftChild.postorderTraverse_binaryNodeMethod();
+        }
+        if(rightChild != null){
+            rightChild.postorderTraverse_binaryNodeMethod();
+        }
+        System.out.println(getData());
+    }
+
+    public int getNumberOfNodes_binaryNodeMethod() {
+        return 0;
+    }
 }
