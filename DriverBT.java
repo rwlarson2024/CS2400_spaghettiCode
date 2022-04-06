@@ -1,4 +1,4 @@
-/** Driver code containing main method to create binary trees.  */
+/** Driver code containing main method for performing operations on binary trees.  */
 public class DriverBT 
 {
 	public static void main(String[] args)
@@ -68,9 +68,9 @@ public class DriverBT
       System.out.println("   /   \\  ");
       System.out.println("  B     C  ");
       System.out.println(" / \\   /  ");
-      System.out.println("D   E  F   ");
-      System.out.println("        \\ ");
-      System.out.println("         G ");
+      System.out.println("D   E F   ");
+      System.out.println("       \\ ");
+      System.out.println("        G ");
       System.out.println();
 	} // end createTree
 	
@@ -85,9 +85,9 @@ public class DriverBT
 		BinaryTree<String> hTree = new BinaryTree<>("H");
 
 		// Subtrees:
-        BinaryTree<String> dTree = new BinaryTree<>("D", null, fTree);
+        BinaryTree<String> dTree = new BinaryTree<>("D", fTree, null);
 		BinaryTree<String> eTree = new BinaryTree<>("E", gTree, hTree);
-		BinaryTree<String> cTree = new BinaryTree<>("C", eTree, dTree);
+		BinaryTree<String> cTree = new BinaryTree<>("C", dTree, eTree);
 
 		tree.setTree("A", bTree, cTree);
 		
@@ -96,9 +96,9 @@ public class DriverBT
       System.out.println("   /   \\  ");
       System.out.println("  B     C  ");
       System.out.println("       / \\  ");
-      System.out.println("      D    E");
-      System.out.println("     \\   / \\ ");
-      System.out.println("      F  G    H ");
+      System.out.println("      D   E");
+      System.out.println("     /   / \\ ");
+      System.out.println("    F   G   H ");
       System.out.println();
 	} // end createTree2
 

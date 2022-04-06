@@ -111,12 +111,12 @@ public class BinaryTree<T> implements BinaryTreeInterface<T>
    /** Prints all nodes in the subtree rooted at this node uing post-order traversal. */
    private void postorderTraverse(BinaryNode<T> node)
    {
-       if (node != null)
-       {
-           postorderTraverse(node.getLeftChild());
-           postorderTraverse(node.getRightChild());
-           System.out.println(node.getData());
-       }
+      if (node != null)
+      {
+         postorderTraverse(node.getLeftChild());
+         postorderTraverse(node.getRightChild());
+         System.out.println(node.getData());
+      }
    }
  
    /** Prints all nodes in the "whole" tree using post-order traversal. */
@@ -130,6 +130,25 @@ public class BinaryTree<T> implements BinaryTreeInterface<T>
    public int getHeight_callBinaryNodeMethod()
    {
 	   return root.getHeight_binaryNodeMethod();
+   }
+
+   /** Calls the next getHeight method
+      @return The value from the next getHeight method. */
+   public int getHeight()
+   {
+      return getHeight(root);
+   }
+    
+   /** Retrieves the height of the subtree rooted at this node.
+      @return The height of the node's subtree. */
+   public int getHeight(BinaryNode<T> node)
+   {
+      int height = 0;
+      if (node != null)
+      {
+         height = 1 + Math.max(getHeight(node.getLeftChild()), getHeight(node.getRightChild()));
+      }
+      return height;
    }
 
    /** calls getNumberOfNodes(BinaryNode<T> node) 
@@ -154,12 +173,6 @@ public class BinaryTree<T> implements BinaryTreeInterface<T>
          rightNumber = getNumberOfNodes(node.getRightChild());
       }
       return 1 + leftNumber + rightNumber;
-   }
-
-   /** Method implementation required by TreeInterface. */
-   public int getHeight() 
-   {
-      return 0;
    }
 
    /** The following calls getNumberOfNodes_binaryNodeMethod() which is a recursive binaryNode class method
