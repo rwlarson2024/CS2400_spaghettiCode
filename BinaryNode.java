@@ -73,7 +73,7 @@ public class BinaryNode<T>
         @param newData The right child. */
     public void setRightChild(BinaryNode<T> newRightChild)
     {
-        leftChild = newRightChild;
+        rightChild = newRightChild;
     }
 
     /** Checks if this node has a right child.
