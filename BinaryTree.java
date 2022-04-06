@@ -162,7 +162,6 @@ public class BinaryTree<T> implements BinaryTreeInterface<T>
       @return The number of nodes in the node's subtree. */
    private int getNumberOfNodes(BinaryNode<T> node)
    {
-      int numOfNodes=0;
       int leftNumber = 0;
       int rightNumber = 0;
       if (node.getLeftChild() != null)
