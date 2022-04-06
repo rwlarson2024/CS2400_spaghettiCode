@@ -1,4 +1,4 @@
-// package TreePackage;
+// package TreePackage
 
 /** Class for creating a BinaryNode object. */
 public class BinaryNode<T>
@@ -55,7 +55,7 @@ public class BinaryNode<T>
         leftChild = newLeftChild;
     }
 
-    /** Checks whether this node has a left child.
+    /** Checks if this node has a left child.
         @return True if the node has a left child. */
     public boolean hasLeftChild()
     {
@@ -76,54 +76,60 @@ public class BinaryNode<T>
         leftChild = newRightChild;
     }
 
-    /** Checks whether this node has a right child.
+    /** Checks if this node has a right child.
         @return True if the node has a right child. */
     public boolean hasRightChild()
     {
         return rightChild != null;
     }
 
-    /** Checks whether this node is a leaf.
+    /** Checks if this node is a leaf.
         @return True if the node is a leaf. */
     public boolean isLeaf()
     {
         return (leftChild == null) && (rightChild == null);
     }
 
+    /** Prints all nodes of a subtree rooted at a BinaryNode object using post-order traversal. */
+    public void postorderTraverse_binaryNodeMethod()
+    {
+        
+    }
+
+    /** Calls getHeight_binaryNodeMethod(BinaryNode<T> node) method
+        @return The value from the next getHeight method. */
+    public int getHeight_binaryNodeMethod()
+    {
+        return getHeight_binaryNodeMethod(this);
+    }
+
+    /** Retrieves the height of the subtree rooted at this node.
+        @return The height of the node's subtree. */
+    public int getHeight_binaryNodeMethod(BinaryNode<T> node)
+    {
+        int height = 0;
+        if (node != null)
+        {
+            height = 1 + Math.max(getHeight_binaryNodeMethod(node.getLeftChild()), getHeight_binaryNodeMethod(node.getRightChild()));
+        }
+        return height;
+    }
+
     /** Retrieves the number of nodes in the subtree rooted at this node.
         @return The number of nodes in the node's subtree. */
-    public int getNumberOfNodes()
+    public int getNumberOfNodes_binaryNodeMethod() 
     {
         int leftNumber = 0;
         int rightNumber = 0;
         if (leftChild != null)
         {
-            leftNumber = leftChild.getNumberOfNodes();
+            leftNumber = leftChild.getNumberOfNodes_binaryNodeMethod();
         }
         if (rightChild != null)
         {
-            rightNumber = rightChild.getNumberOfNodes();
+            rightNumber = rightChild.getNumberOfNodes_binaryNodeMethod();
         }
         return 1 + leftNumber + rightNumber;
-    }
-
-    /** Calls the next getHeight method
-        @return The value from the next getHeight method. */
-    public int getHeight()
-    {
-        return getHeight(this);
-    }
-
-    /** Retrieves the height of the subtree rooted at this node.
-        @return The height of the node's subtree. */
-    public int getHeight(BinaryNode<T> node)
-    {
-        int height = 0;
-        if (node != null)
-        {
-            height = 1 + Math.max(getHeight(node.getLeftChild()), getHeight(node.getRightChild()));
-        }
-        return height;
     }
 
     /** Copies the subtree rooted at a node.
@@ -140,19 +146,5 @@ public class BinaryNode<T>
             newRoot.setRightChild(rightChild.copy());
         }
         return newRoot;
-    }
-
-    public void postorderTraverse_binaryNodeMethod() {
-        if(leftChild != null){
-            leftChild.postorderTraverse_binaryNodeMethod();
-        }
-        if(rightChild != null){
-            rightChild.postorderTraverse_binaryNodeMethod();
-        }
-        System.out.println(getData());
-    }
-
-    public int getNumberOfNodes_binaryNodeMethod() {
-        return 0;
     }
 }

@@ -1,4 +1,5 @@
-// package TreePackage;
+// package TreePackage
+
 /**
    An interface for the ADT binary tree.
    

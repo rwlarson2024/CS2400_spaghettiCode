@@ -1,3 +1,4 @@
+/** Driver code containing main method to create binary trees.  */
 public class DriverBT 
 {
 	public static void main(String[] args)
