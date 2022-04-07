@@ -9,7 +9,7 @@ Estevan Delgado wrote code for the BinaryTree and helped write some of the code 
 
 We used JUnit as our Java unit testing framework to demonstrate our understanding on binary trees as well as their operations, including finding the post-order traversal, the height of the tree or a node on the tree, and the number of nodes on a tree or a subtree of a given node. 
 
-The video was recorded using OBS Studio and was edited using Adobe Premier.
+The video was recorded using OBS Studio and was edited using Adobe Premiere Pro.
 
 Javadoc's start page -  https://project3-rosy.vercel.app/allclasses-index.html
 
