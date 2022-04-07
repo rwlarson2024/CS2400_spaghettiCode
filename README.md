@@ -13,4 +13,4 @@ The video was recorded using OBS Studio and was edited using Adobe Premier.
 
 Javadoc's start page -  https://project3-rosy.vercel.app/allclasses-index.html
 
-Video link - 
+Video link - https://youtu.be/7kxJ7FWdSZQ
