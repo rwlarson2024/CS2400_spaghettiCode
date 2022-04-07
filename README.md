@@ -7,5 +7,7 @@ Allan Chan wrote the code for BinaryNode and also helped write some code on Bina
 Estevan Delgado wrote code for the BinaryTree and helped write some of the code on BinaryNode.
 
 The group understands binary trees and how to find the postorder traverse, finding the height of the tree or a node on the tree, and also know how to get the number of nodes on a tree.
+
 Javadoc's start page -  https://project3-rosy.vercel.app/allclasses-index.html
+
 Video link - 
