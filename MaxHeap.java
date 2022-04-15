@@ -48,7 +48,7 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
         }
         heap[newIndex] = newEntry;
         lastIndex++;
-        ensureCapacity():
+        ensureCapacity();
     }
 
     /** Removes and returns the largest item in the heap.
