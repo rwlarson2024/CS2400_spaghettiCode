@@ -39,14 +39,40 @@ public class DriverMH
         {
             outputFile.print(heapOneArray[i] + " ");
         }
-
+    
+        inputFile.close();
         outputFile.println("\n");
-        
+        inputFile = new Scanner(file);
+
+        Integer[] tempArray = new Integer[100];
+        int j = 0;
+        while (inputFile.hasNext())
+        {
+            tempArray[j] = inputFile.nextInt();
+            j++;
+        }
+        MaxHeap<Integer> heapTwo = new MaxHeap<>(tempArray);  
         outputFile.print("Heap built using optimal method: ");
+        Integer[] heapTwoArray = heapTwo.getArray();
+        for (int i = 1; i <= 10; i++)
+        {
+            outputFile.print(heapTwoArray[i] + " ");
+        }
         outputFile.println();
-        outputFile.print("Number of swaps in the heap creation: ");
+        outputFile.print("Number of swaps in the heap creation: " + heapTwo.getSwapCount());
         outputFile.println();
         outputFile.print("Heap after 10 removals: ");
+        for (int i = 1; i <= 10; i++)
+        {
+            heapTwo.removeMax();
+        }
+        heapTwoArray = heapTwo.getArray();
+        for (int i = 1; i <= 10; i++)
+        {
+            outputFile.print(heapTwoArray[i] + " ");
+        }
+
+        System.out.print("Output printed in output.txt");
 
         inputFile.close();
         outputFile.close();
