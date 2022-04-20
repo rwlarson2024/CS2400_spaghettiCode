@@ -95,6 +95,34 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
         heap[rootIndex] = orphan;
     }
 
+    private static <T extends Comparable<? super T>> void reheap(T[] heap, int rootIndex, int lastIndex)
+    {
+        boolean done = false;
+        T orphan = heap[rootIndex];
+        int leftChildIndex = 2 * rootIndex + 1;
+
+        while (!done && (leftChildIndex <= lastIndex))
+        {
+            int largerChildIndex = leftChildIndex;
+            int rightChildIndex = leftChildIndex + 1;
+
+            if ( (rightChildIndex <= lastIndex) && heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0)
+            {
+                largerChildIndex = rightChildIndex;
+            } // end if
+
+            if (orphan.compareTo(heap[largerChildIndex]) < 0)
+            {
+                heap[rootIndex] = heap[largerChildIndex];
+                rootIndex = largerChildIndex;
+                leftChildIndex = 2 * rootIndex + 1;
+            }
+            else
+                done = true;
+        } // end while
+        heap[rootIndex] = orphan;
+    } // end reheap
+
     /** Retrieves the largest item in the heap.
         @return  The largest object in the heap or, 
                  otherwise null if heap is empty before the operation. */
