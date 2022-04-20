@@ -1,0 +1,7 @@
+Heap built using sequential insertions: 
+Number of swaps in the heap creation: 
+Heap after 10 removals: 
+
+Heap built using optimal method: 
+Number of swaps in the heap creation: 
+Heap after 10 removals: 
