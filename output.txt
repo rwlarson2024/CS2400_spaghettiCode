@@ -1,6 +1,6 @@
-Heap built using sequential insertions: 
-Number of swaps in the heap creation: 
-Heap after 10 removals: 
+Heap built using sequential insertions: 100 94 99 77 93 98 61 68 76 84 
+Number of swaps in the heap creation: 480
+Heap after 10 removals: 90 89 62 77 88 53 61 68 76 84 
 
 Heap built using optimal method: 
 Number of swaps in the heap creation: 
