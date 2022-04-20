@@ -13,5 +13,5 @@ Number of swaps in the heap creation: 114
 Heap after 10 removals: 924 904 913 874 882 843 880 814 872 865 
 
 Heap built using optimal method: 997 982 991 960 982 972 880 931 874 953 
-Number of swaps in the heap creation: 92
+Number of swaps in the heap creation: 71
 Heap after 10 removals: 924 904 913 874 882 865 880 814 872 850 
