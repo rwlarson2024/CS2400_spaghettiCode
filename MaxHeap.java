@@ -192,3 +192,4 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
         if (!integrityOK)
             throw new SecurityException("Max heap object is corrupt.");
     }
+}
