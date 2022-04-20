@@ -70,6 +70,20 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
         return root;
     }
 
+    /** Constructor with a given array, used for optimal method */
+    public MaxHeap(T[] entries)
+    {
+        this(entries.length);
+        for (int index = 0; index < entries.length; index ++)
+        {
+            heap[index + 1] = entries[index];
+            lastIndex++;
+        }
+        for(int rootIndex = lastIndex / 2; rootIndex > 0; rootIndex --)
+            reheap(rootIndex);
+    }
+
+    /** Optimal method for reorganizing the heap. */
     private void reheap(int rootIndex)
     {
         boolean done = false;
@@ -88,12 +102,12 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
                 heap[rootIndex] = heap[largerChildIndex];
                 rootIndex = largerChildIndex;
                 leftChildIndex = 2 * rootIndex;
-                swapCount++;
             }
             else
             {
                 done = true;
             }
+            swapCount++;
         }
         heap[rootIndex] = orphan;
     }
@@ -124,6 +138,20 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
     public int getSize()
     {
         return lastIndex;
+    }
+
+    /** Gets the heap array.
+        @return  The heap array. */
+    public T[] getArray()
+    {
+        return this.heap;
+    }
+
+    /** Gets the number of swaps after the heap is created.
+        @return  The number of swaps. */
+    public int getSwapCount()
+    {
+        return this.swapCount;
     }
 
     /** Removes all entries from the heap. */
@@ -164,6 +192,9 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
         if (!integrityOK)
             throw new SecurityException("Max heap object is corrupt.");
     }
+
+    /** Extra methods */
+    
     public static <T extends Comparable<? super T>> void heapSort(T[] array, int n)
     {
         // Create first heap
@@ -178,18 +209,6 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
             //swap(array, 0, lastIndex);
         } // end for
     } // end heapSort
-
-    public MaxHeap(T[] entries)
-    {
-        this(entries.length);
-        for (int index = 0; index < entries.length; index ++)
-        {
-            heap[index +1] = entries [index];
-            lastIndex++;
-        }
-        for(int rootIndex = lastIndex / 2; rootIndex > 0; rootIndex --)
-            reheap(rootIndex);
-    }
 
     private static <T extends Comparable<? super T>> void reheap(T[] heap, int rootIndex, int lastIndex)
     {
@@ -218,15 +237,5 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
         } // end while
         heap[rootIndex] = orphan;
     } // end reheap
-
-    public T[] getArray()
-    {
-        return this.heap;
-    }
-
-    public int getSwapCount()
-    {
-        return this.swapCount;
-    }
 
 }
