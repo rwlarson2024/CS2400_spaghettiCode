@@ -19,7 +19,7 @@ public class DriverMH
         {
             heapOne.add(inputFile.nextInt());
         }
-
+        outputFile.println("sorted");
         outputFile.print("Heap built using sequential insertions: ");
         Integer[] heapOneArray = heapOne.getArray();
         for (int i = 1; i <= 10; i++)
@@ -71,14 +71,12 @@ public class DriverMH
         {
             outputFile.print(heapTwoArray[i] + " ");
         }
-
-        System.out.print("Output printed in output.txt");
         inputFile.close();
+
+        outputFile.println("\n");
 
         File fileRand = new File("data_random.txt");
         inputFile = new Scanner(fileRand);
-
-
 
         MaxHeap<Integer> heapRand = new MaxHeap<>(100);
         while (inputFile.hasNext())
@@ -86,6 +84,7 @@ public class DriverMH
             heapRand.add(inputFile.nextInt());
         }
 
+        outputFile.println("random");
         outputFile.print("Heap built using sequential insertions: ");
         Integer[] heapRandArray = heapRand.getArray();
         for (int i = 1; i <= 10; i++)
@@ -114,12 +113,12 @@ public class DriverMH
         int k = 0;
         while (inputFile.hasNext())
         {
-            tempRandArray[j] = inputFile.nextInt();
+            tempRandArray[k] = inputFile.nextInt();
             k++;
         }
         MaxHeap<Integer> heapRandTwo = new MaxHeap<>(tempRandArray);  
         outputFile.print("Heap built using optimal method: ");
-        Integer[] heapRandTwoArray = heapTwo.getArray();
+        Integer[] heapRandTwoArray = heapRandTwo.getArray();
         for (int i = 1; i <= 10; i++)
         {
             outputFile.print(heapRandTwoArray[i] + " ");
@@ -135,11 +134,10 @@ public class DriverMH
         heapRandTwoArray = heapRandTwo.getArray();
         for (int i = 1; i <= 10; i++)
         {
-            outputFile.print(heapTwoArray[i] + " ");
+            outputFile.print(heapRandTwoArray[i] + " ");
         }
 
         System.out.print("Output printed in output.txt");
-
 
         inputFile.close();
         outputFile.close();

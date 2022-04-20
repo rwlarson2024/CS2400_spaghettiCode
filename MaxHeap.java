@@ -93,6 +93,7 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
             {
                 done = true;
             }
+            swapCount++;
         }
         heap[rootIndex] = orphan;
     }
@@ -182,7 +183,10 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
     {
         this(entries.length);
         for (int index = 0; index < entries.length; index ++)
+        {
             heap[index +1] = entries [index];
+            lastIndex++;
+        }
         for(int rootIndex = lastIndex / 2; rootIndex > 0; rootIndex --)
             reheap(rootIndex);
     }
