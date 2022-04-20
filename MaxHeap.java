@@ -161,4 +161,28 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
         if (!integrityOK)
             throw new SecurityException("Max heap object is corrupt.");
     }
+    public static <T extends Comparable<? super T>> void heapSort(T[] array, int n)
+    {
+        // Create first heap
+        for (int rootIndex = n / 2 - 1; rootIndex >= 0; rootIndex--)
+            reheap(array, rootIndex, n - 1);
+
+            swap(array, 0, n - 1);
+
+        for (int lastIndex = n - 2; lastIndex > 0; lastIndex--)
+        {
+            reheap(array, 0, lastIndex);
+            swap(array, 0, lastIndex);
+        } // end for
+    } // end heapSort
+    public MaxHeap(T[] entries)
+    {
+        this(entries.length);
+        assert initialized = true;
+        for (int index = 0; index < entries.length; index ++)
+            heap[index +1] = entries [index];
+        for(int rootIndex = lastIndex / 2; rootIndex > 0; rootIndex --)
+            reheap(rootIndex);
+    }
+
 }
