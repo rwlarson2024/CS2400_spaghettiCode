@@ -88,12 +88,12 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
                 heap[rootIndex] = heap[largerChildIndex];
                 rootIndex = largerChildIndex;
                 leftChildIndex = 2 * rootIndex;
+                swapCount++;
             }
             else
             {
                 done = true;
             }
-            swapCount++;
         }
         heap[rootIndex] = orphan;
     }
