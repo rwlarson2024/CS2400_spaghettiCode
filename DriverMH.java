@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/** Driver code containing main method for building max heaps with given data text files.  */
 public class DriverMH
 {
     public static void main(String[] args) throws IOException
