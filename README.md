@@ -1,4 +1,4 @@
-# CS2400_spaghettiCode
+# CS2400_spaghettiCode - Project 4
 A repository for the group projects in CS2400.03. The Group includes : Ryan Larson, Allan Chan, And Estevan Delgado. 
 
 Ryan Larson wrote the code for DriverMH and also helped write code on Max Heap
