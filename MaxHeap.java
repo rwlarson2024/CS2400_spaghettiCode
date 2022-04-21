@@ -78,6 +78,7 @@ public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterfac
         {
             heap[index + 1] = entries[index];
             lastIndex++;
+            ensureCapacity();
         }
         for(int rootIndex = lastIndex / 2; rootIndex > 0; rootIndex --)
             reheap(rootIndex);
