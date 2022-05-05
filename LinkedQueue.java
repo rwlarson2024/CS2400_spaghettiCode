@@ -45,7 +45,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
     public void enqueue(T newEntry) 
     {
-        Node<T> newNode = new Node<>(newEntry, null);
+        Node<T> newNode = new Node<>(newEntry);
         if (isEmpty())
             firstNode = newNode;
         else
