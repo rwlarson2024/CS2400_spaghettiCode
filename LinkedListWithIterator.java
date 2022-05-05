@@ -42,15 +42,13 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
 			nextNode = firstNode;
 		} // end default constructor
 
-      @Override
-      public boolean hasNext() {
-         // TODO Auto-generated method stub
+      public boolean hasNext()
+      {
          return false;
       }
 
-      @Override
-      public T next() {
-         // TODO Auto-generated method stub
+      public T next()
+      {
          return null;
       }
 		
@@ -96,63 +94,53 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
       } // end setNextNode
 	} // end Node
 
-   @Override
-   public void add(T newEntry) {
-      // TODO Auto-generated method stub
+   public void add(T newEntry)
+   {
       
    }
 
-   @Override
-   public void add(int newPosition, T newEntry) {
-      // TODO Auto-generated method stub
+   public void add(int newPosition, T newEntry)
+   {
+
+   }
+
+   public T remove(int givenPosition)
+   {
+      return null;
+   }
+
+   public void clear() 
+   {
       
    }
 
-   @Override
-   public T remove(int givenPosition) {
-      // TODO Auto-generated method stub
+   public T replace(int givenPosition, T newEntry)
+   {
       return null;
    }
 
-   @Override
-   public void clear() {
-      // TODO Auto-generated method stub
-      
-   }
-
-   @Override
-   public T replace(int givenPosition, T newEntry) {
-      // TODO Auto-generated method stub
+   public T getEntry(int givenPosition)
+   {
       return null;
    }
 
-   @Override
-   public T getEntry(int givenPosition) {
-      // TODO Auto-generated method stub
+   public T[] toArray()
+   {
       return null;
    }
 
-   @Override
-   public T[] toArray() {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
-   @Override
-   public boolean contains(T anEntry) {
-      // TODO Auto-generated method stub
+   public boolean contains(T anEntry)
+   {
       return false;
    }
 
-   @Override
-   public int getLength() {
-      // TODO Auto-generated method stub
+   public int getLength()
+   {
       return 0;
    }
 
-   @Override
-   public boolean isEmpty() {
-      // TODO Auto-generated method stub
+   public boolean isEmpty()
+   {
       return false;
    }
 } // end LinkedListWithIterator
