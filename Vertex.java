@@ -58,6 +58,7 @@ class Vertex<T> implements VertexInterface<T>
                 if (endVertex.equals(nextNeighbor))
                 {
                     duplicateEdge = true;
+                    break;
                 }
             }
             if (!duplicateEdge)
