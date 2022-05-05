@@ -1,4 +1,4 @@
-import javax.swing.plaf.metal.MetalPopupMenuSeparatorUI;
+// import javax.swing.plaf.metal.MetalPopupMenuSeparatorUI;
 
 public class DriverGraph
 {
@@ -9,7 +9,7 @@ public class DriverGraph
 
     public static void main(String[]args)
     {
-        DirectedGraph graph = new DirectedGraph<>();
+        DirectedGraph<String> graph = new DirectedGraph<>();
         graph.addVertex("A");
         graph.addVertex("B");
         graph.addVertex("C");

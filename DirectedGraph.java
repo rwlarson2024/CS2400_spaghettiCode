@@ -14,7 +14,7 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	
 	public DirectedGraph()
 	{
-		vertices = new SortedArrayDictionary<T, VertexInterface<T>>();
+		vertices = new SortedLinkedDictionary<T, VertexInterface<T>>();
 		edgeCount = 0;
 	} // end default constructor
 
