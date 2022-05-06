@@ -35,11 +35,19 @@ public class DriverGraph
         graph.addEdge("I", "F");
 
         System.out.print("This is the Breadth First Traversal \n");
-        System.out.print(graph.getBreadthFirstTraversal("A")+"\n");
+        QueueInterface<String> breadthFirstTraversalOrder = graph.getBreadthFirstTraversal("A");
+        while (!breadthFirstTraversalOrder.isEmpty())
+        {
+            System.out.print(breadthFirstTraversalOrder.dequeue() + " ");
+        }
+
+        System.out.println("\n");
+
         System.out.print("This is the Depth First Traversal \n");
-        System.out.print(graph.getDepthFirstTraversal("A")+"\n");
-
-
+        QueueInterface<String> depthFirstTraversalOrder = graph.getDepthFirstTraversal("A");
+        while (!depthFirstTraversalOrder.isEmpty())
+        {
+            System.out.print(depthFirstTraversalOrder.dequeue() + " ");
+        }
     }
-
 }
