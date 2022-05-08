@@ -182,11 +182,6 @@ class Vertex<T> implements VertexInterface<T>
                 throw new NoSuchElementException();
             return nextNeighbor;
         }
-
-        public void remove()
-        {
-            throw new UnsupportedOperationException();
-        }
     }
 
     private class WeightIterator implements Iterator<Double>
@@ -214,11 +209,6 @@ class Vertex<T> implements VertexInterface<T>
             else
                 throw new NoSuchElementException();
             return weight;
-        }
-
-        public void remove()
-        {
-            throw new UnsupportedOperationException();
         }
     }
 } // end Vertex
