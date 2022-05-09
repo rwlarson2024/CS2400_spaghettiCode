@@ -2,11 +2,6 @@
 
 public class DriverGraph
 {
-    public DriverGraph()
-    {
-
-    }
-
     public static void main(String[]args)
     {
         DirectedGraph<String> graph = new DirectedGraph<>();
@@ -33,6 +28,26 @@ public class DriverGraph
         graph.addEdge("H", "I");
         graph.addEdge("C", "B");
         graph.addEdge("I", "F");
+
+        System.out.print("Adjacency Matrix \n");
+        boolean[][] matrix = graph.getAdjacencyMatrix();
+        char c = 'A';
+        System.out.println("  A B C D E F G H I");
+        for (int i = 0; i <= 8; i++)
+        {
+            System.out.print(c + " ");
+            for (int j = 0; j <= 8; j++)
+            {
+                if (matrix[i][j] == true)
+                    System.out.print("T ");
+                else
+                    System.out.print("F ");
+            }
+            System.out.println();
+            c++;
+        }
+
+        System.out.println();
 
         System.out.print("This is the Breadth First Traversal \n");
         QueueInterface<String> breadthFirstTraversalOrder = graph.getBreadthFirstTraversal("A");
