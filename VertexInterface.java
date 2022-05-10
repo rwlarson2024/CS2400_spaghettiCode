@@ -60,7 +60,7 @@ public interface VertexInterface<T>
    public VertexInterface<T> getUnvisitedNeighbor();
 
    /** Records the previous vertex on a path to this vertex.
-       @param predecessor  The vertex previous to this one along a path.  */
+       @param predecessor  The vertex previous to this one along a path. */
    public void setPredecessor(VertexInterface<T> predecessor);
 
    /** Gets the recorded predecessor of this vertex.

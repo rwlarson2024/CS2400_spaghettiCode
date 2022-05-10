@@ -1,10 +1,12 @@
 import java.util.NoSuchElementException;
 
+/** Class for creating a LinkedQueue object. */
 public class LinkedQueue<T> implements QueueInterface<T>
 {
     private Node<T> firstNode;
     private Node<T> lastNode;
 
+    /** Default constructor */
     public LinkedQueue()
     {
         firstNode = null;
@@ -43,6 +45,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
         }
     }
 
+    /** Adds a new entry to the back of the queue.
+        @param newEntry  An object to be added to the queue. */
     public void enqueue(T newEntry) 
     {
         Node<T> newNode = new Node<>(newEntry);
@@ -53,6 +57,9 @@ public class LinkedQueue<T> implements QueueInterface<T>
         lastNode = newNode;
     }
 
+    /** Removes and returns the entry at the front of the queue.
+        @return  The object at the front of the queue. 
+        @throws  NoSuchElementException if the queue is empty before the operation. */
     public T dequeue() 
     {
         T front = getFront();
@@ -63,6 +70,9 @@ public class LinkedQueue<T> implements QueueInterface<T>
         return front;
     }
 
+    /** Retrieves the entry at the front of the queue.
+        @return  The object at the front of the queue.
+        @throws  NoSuchElementException if the queue is empty. */
     public T getFront() 
     {
         if (isEmpty())
@@ -71,11 +81,14 @@ public class LinkedQueue<T> implements QueueInterface<T>
             return firstNode.getData();
     }
 
+    /** Detects whether the queue is empty.
+        @return  True if the queue is empty. */
     public boolean isEmpty() 
     {
         return (firstNode == null) && (lastNode == null);
     }
 
+    /** Removes all entries from the queue. */
     public void clear() 
     {
         firstNode = null;

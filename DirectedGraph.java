@@ -14,6 +14,7 @@ public class DirectedGraph<T> implements GraphInterface<T>
     private boolean[][] edges; // Adjacency matrix
     private String[] labels; // Adjacency list
 	
+    /** Default constructor */
 	public DirectedGraph()
 	{
 		vertices = new LinkedHashMap<>();
@@ -22,12 +23,21 @@ public class DirectedGraph<T> implements GraphInterface<T>
         labels = new String[9];
 	} // end default constructor
 
+    /** Adds a given vertex to the graph.
+        @param  vertexLabel  An object that labels the new vertex and is distinct from the labels of current vertices.
+        @return  True if the vertex is added, or false if not. */
     public boolean addVertex(T vertexLabel)
     {
         VertexInterface<T> addOutcome = vertices.put(vertexLabel, new Vertex<>(vertexLabel));
         return addOutcome == null;
     }
 
+    /** Adds a weighted edge between two given distinct vertices that are currently in this graph. 
+        The edge points toward the second vertex given.
+        @param begin  An object that labels the origin vertex of the edge.
+        @param end  An object that labels the end vertex of the edge.
+        @param edgeWeight  The value of the edge's weight.
+        @return  True if the edge is added, or false if not. */
     public boolean addEdge(T begin, T end, double edgeWeight)
     {
         boolean result = false;
@@ -43,11 +53,20 @@ public class DirectedGraph<T> implements GraphInterface<T>
         return result;
     }
 
+    /** Adds an unweighted edge between two given distinct vertices that are currently in this graph. 
+        In a directed graph, the edge points toward the second vertex given.
+        @param begin  An object that labels the origin vertex of the edge.
+        @param end  An object that labels the end vertex of the edge.
+        @return  True if the edge is added, or false if not. */
     public boolean addEdge(T begin, T end)
     {
         return addEdge(begin, end, 0);
     }
 
+    /** Checks whether an edge exists between two given vertices.
+        @param begin  An object that labels the origin vertex of the edge.
+        @param end    An object that labels the end vertex of the edge.
+        @return  True if an edge exists. */
     public boolean hasEdge(T begin, T end)
     {
         boolean found = false;
@@ -66,27 +85,35 @@ public class DirectedGraph<T> implements GraphInterface<T>
         return found;
     }
 
+    /** Checks if the graph is empty.
+        @return  True if the graph is empty. */
     public boolean isEmpty()
     {
         return vertices.isEmpty();
     }
 
+    /** Gets the number of vertices in the graph.
+        @return  The number of vertices in the graph. */
     public int getNumberOfVertices()
     {
         return vertices.size();
     }
 
+    /** Gets the number of edges in the graph.
+        @return  The number of edges in the graph. */
     public int getNumberOfEdges()
     {
         return edgeCount;
     }
 
+    /** Removes all vertices and edges from the graph resulting in an empty graph. */
     public void clear()
     {
         vertices.clear();
         edgeCount = 0;
     }
 
+    /** Resets the visited status of all vertices of the graph. */
     protected void resetVertices()
     {
         Iterator<VertexInterface<T>> vertexIterator = vertices.values().iterator();
@@ -99,6 +126,9 @@ public class DirectedGraph<T> implements GraphInterface<T>
         }
     }
 
+    /** Performs a BFS of the directed graph with a given vertex as its origin.
+        @param  vertexLabel  An object that labels the origin vertex.
+        @return  A new queue of the resulting breadth-first traversal order. */
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {
         resetVertices();
@@ -126,6 +156,9 @@ public class DirectedGraph<T> implements GraphInterface<T>
         return traversalOrder;
     }
 
+    /** Performs a DFS of the directed graph with a given vertex as its origin.
+        @param  vertexLabel  An object that labels the origin vertex.
+        @return  A new queue of the resulting depth-first traversal order. */
     public QueueInterface<T> getDepthFirstTraversal(T origin)
     {
         resetVertices();
@@ -151,6 +184,9 @@ public class DirectedGraph<T> implements GraphInterface<T>
         return traversalOrder;
     }
 
+    /** Retrieves a vertex number that corresponds to the given vertex.
+        @param  vertexLabel  An object that labels the given vertex.
+        @return  The vertex number. */
     private int getVertexNumber(T vertexLabel)
     {
         String label = (String) vertexLabel;
@@ -171,11 +207,14 @@ public class DirectedGraph<T> implements GraphInterface<T>
         return number;
     }
 
+    /** Retrieves the adjacency matrix of a directed graph. */
     public boolean[][] getAdjacencyMatrix()
     {
         return this.edges;
     }
 
+    /** Creates and displays an adjacency list of a given vertex.
+        @param vertexLabel  An object that labels the given vertex. */
     public void getNeighborsList(T vertexLabel)
     {
         int labelNumber = getVertexNumber(vertexLabel);
@@ -205,10 +244,13 @@ public class DirectedGraph<T> implements GraphInterface<T>
         System.out.println();
     }
 
-    private String getVertexLabel(int vertex)
+    /** Retrieves a vertex label that corresponds to the given vertex number.
+        @param  vertexNumber  A given vertex number.
+        @return  The vertex label. */
+    private String getVertexLabel(int vertexNumber)
     {
         String label = "";
-        switch(vertex)
+        switch(vertexNumber)
         {
             case 0 -> label = "A";
             case 1 -> label = "B";

@@ -10,15 +10,18 @@ import java.util.NoSuchElementException;
 */
 public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
 {
-   private Node<T> firstNode;
-   private int numberOfEntries;
+    private Node<T> firstNode;
+    private int numberOfEntries;
 
+    /** Default constructor */
     public LinkedListWithIterator()
     {
         firstNode = null;
         numberOfEntries = 0;
     } // end default constructor
 
+    /** Adds a new entry to the end of the list.
+        @param newEntry  The object to be added as a new entry. */
     public void add(T newEntry)
     {
         Node<T> newNode = new Node<>(newEntry);
@@ -34,6 +37,10 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
         numberOfEntries++;
     }
 
+    /** Adds a new entry at a specified position within the list.
+        @param newPosition  An integer that specifies the desired position of the new entry.
+        @param newEntry  The object to be added as a new entry.
+        @throws  IndexOutOfBoundsException if either newPosition < 1 or newPosition > getLength() + 1. */
     public void add(int newPosition, T newEntry)
     {
         if ((newPosition >= 1) && (newPosition <= numberOfEntries + 1))
@@ -54,6 +61,9 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
         }
     }
 
+    /** Locates a node at a specified position within the list.
+        @param givenPosition  An integer that specifies the desired position of the list. 
+        @return  Node of the desired position. */
     private Node<T> getNodeAt(int givenPosition)
     {
         Node<T> currentNode = firstNode;
@@ -62,6 +72,10 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
         return currentNode;
     }
 
+    /** Removes the entry at a given position from the list.
+        @param givenPosition  An integer that indicates the position of the entry to be removed.
+        @return  A reference to the removed entry.
+        @throws  IndexOutOfBoundsException if either givenPosition < 1 or givenPosition > getLength(). */
     public T remove(int givenPosition)
     {
         T result = null;
@@ -87,12 +101,18 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
             throw new IndexOutOfBoundsException("Illegal position given to remove operation.");
     }
 
+    /** Removes all entries from the list. */
     public void clear()
     {
         firstNode = null;
         numberOfEntries = 0;
     }
 
+    /** Replaces the entry at a given position in the list.
+        @param givenPosition  An integer that indicates the position of the entry to be replaced.
+        @param newEntry  The object that will replace the entry at the given position.
+        @return  A reference to the original entry that was replaced.
+        @throws  IndexOutOfBoundsException if either givenPosition < 1 or givenPosition > getLength(). */
     public T replace(int givenPosition, T newEntry)
     {
         if ((givenPosition >= 1 && (givenPosition <= numberOfEntries)))
@@ -106,6 +126,10 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
             throw new IndexOutOfBoundsException("Illegal position given to replace operation.");
     }
 
+    /** Retrieves the entry at a given position in the list.
+        @param givenPosition  An integer that indicates the position of the desired entry.
+        @return  A reference to the indicated entry.
+        @throws  IndexOutOfBoundsException if either givenPosition < 1 or givenPosition > getLength(). */
     public T getEntry(int givenPosition)
     {
         if ((givenPosition >= 1 && (givenPosition <= numberOfEntries)))
@@ -116,6 +140,9 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
             throw new IndexOutOfBoundsException("Illegal position given to getEntry operation.");
     }
 
+    /** Retrieves all entries that are in the list in the order in which they occur in the list.
+        @return  A newly allocated array of all the entries in the list.
+                 If the list is empty, the returned array is empty. */
     public T[] toArray()
     {
         @SuppressWarnings("unchecked")
@@ -131,6 +158,9 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
         return result;
     }
 
+    /** Sees whether the list contains a given entry.
+        @param anEntry  The object that is the desired entry.
+        @return  True if the list contains the desired entry. */
     public boolean contains(T anEntry)
     {
         boolean found = false;
@@ -149,26 +179,35 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
         return found;
     }
 
+    /** Gets the length of the list.
+        @return  The number of entries currently in the list. */
     public int getLength()
     {
         return numberOfEntries;
     }
 
+    /** Sees whether the list is empty.
+        @return  True if the list is empty. */
     public boolean isEmpty()
     {
         return firstNode == null;
     }
    
+    /** Creates an iterator for the linked list.
+        @return  An iterator of the linked list. */
     public Iterator<T> iterator()
     {
         return new IteratorForLinkedList();
     } // end iterator
 
+    /** Calls iterator().
+        @return  The result of iterator(). */
 	public Iterator<T> getIterator()
 	{
 	   return iterator();
 	} // end getIterator
    
+    /** Private class for implementing the list iterator */
 	private class IteratorForLinkedList implements Iterator<T>
 	{
         private Node<T> nextNode;
@@ -196,6 +235,7 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
         }
 	} // end IteratorForLinkedList
 	
+    /** Private class for creating nodes */
 	private class Node<T>
 	{
         private T data; // Entry in list
@@ -234,4 +274,3 @@ public class LinkedListWithIterator<T> implements ListWithIteratorInterface<T>
         } // end setNextNode
 	} // end Node
 } // end LinkedListWithIterator
-
