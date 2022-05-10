@@ -7,7 +7,7 @@ Allan Chan wrote some of the code for DirectedGraph and the driver program that 
 
 Estevan Delgado created and led the creation of unit testing and helped with debugging the program when methods were not working as intended. 
 
-Altogether, the group wrote the other files that were necessary for the graph's basic operations and traversals, implementing lists, stacks, queues, and vertices.
+Altogether, the group wrote the other files that were necessary for the graph's basic operations and traversals, including the implementation of lists, stacks, queues, and vertices.
 
 Extra features : JUnit testing, Java interfaces and generics, and both graph representations (adjacency matrix and adjacency list)
 
