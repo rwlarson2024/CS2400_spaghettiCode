@@ -1,14 +1,16 @@
-# CS2400_spaghettiCode
+# CS2400_spaghettiCode - Project 5
 A repository for the group projects in CS2400.03. The Group includes : Ryan Larson, Allan Chan, And Estevan Delgado. 
 
-Ryan Larson wrote the code for DirectedGraph and helped created the setup for the driver program.
+Ryan Larson wrote the code for DirectedGraph and helped set-up the driver program by creating the directed graph, including displaying the traversal orders.
 
-Allan Chan started and finished the Vertex and VertexInterface files and cleaned up code to make overall program organized
+Allan Chan wrote some of the code for DirectedGraph and the driver program that implements and displays the graph representations of the created directed graph.
 
 Estevan Delgado created and led the creation of unit testing and helped with debugging the program when methods were not working as intended. 
 
-Together group worked to create the graphs and how to get them to complete different traversals. 
+Altogether, the group wrote the other files that were necessary for the graph's basic operations and traversals, implementing lists, stacks, queues, and vertices.
 
-Extra features : Junit Testing, Java Interface and generics, and Both Graph Representations (adjacency matrix and adjacency list)
+Extra features : JUnit testing, Java Interfaces and generics, and both graph representations (adjacency matrix and adjacency list)
 
-Github repo - https://github.com/rwlarson2024/CS2400_spaghettiCode.git 
+Github repo - https://github.com/rwlarson2024/CS2400_spaghettiCode/tree/project5
+
+Javadoc's start page - https://project5-beta.vercel.app/allclasses-index.html
