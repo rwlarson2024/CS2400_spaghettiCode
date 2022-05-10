@@ -1,4 +1,3 @@
-// package GraphPackage;
 import java.util.Iterator;
 /**
    An interface for a vertex in a graph.
@@ -49,7 +48,7 @@ public interface VertexInterface<T>
        vertex's neighbors.
     @return  An iterator of edge weights for edges to neighbors of this
              vertex. */
-   //public Iterator<Double> getWeightIterator();
+   public Iterator<Double> getWeightIterator();
 
    /** Sees whether this vertex has at least one neighbor.
        @return  True if the vertex has a neighbor. */
@@ -80,5 +79,4 @@ public interface VertexInterface<T>
    /** Gets the recorded cost of the path to this vertex.
        @return  The cost of the path. */
    public double getCost();
-   
 } // end VertexInterface
