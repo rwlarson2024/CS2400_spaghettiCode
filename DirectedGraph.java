@@ -1,8 +1,6 @@
-//package GraphPackage;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-//import ADTPackage.*; // Classes that implement various ADTs
 /**
    A class that implements the ADT directed graph.
    @author Frank M. Carrano
@@ -13,13 +11,15 @@ public class DirectedGraph<T> implements GraphInterface<T>
 {
 	private Map<T, VertexInterface<T>> vertices;
 	private int edgeCount;
-    private boolean[][] edges;
+    private boolean[][] edges; // Adjacency matrix
+    private String[] labels; // Adjacency list
 	
 	public DirectedGraph()
 	{
 		vertices = new LinkedHashMap<>();
 		edgeCount = 0;
         edges = new boolean[9][9];
+        labels = new String[9];
 	} // end default constructor
 
     public boolean addVertex(T vertexLabel)
@@ -36,7 +36,7 @@ public class DirectedGraph<T> implements GraphInterface<T>
         if ((beginVertex != null) && (endVertex != null))
         {
             result = beginVertex.connect(endVertex, edgeWeight);
-            edges[getSource(begin)][getEnd(end)] = true;
+            edges[getVertexNumber(begin)][getVertexNumber(end)] = true;
         }
         if (result)
             edgeCount++;
@@ -151,86 +151,76 @@ public class DirectedGraph<T> implements GraphInterface<T>
         return traversalOrder;
     }
 
-    public int getSource(T vertexLabel)
+    private int getVertexNumber(T vertexLabel)
     {
         String label = (String) vertexLabel;
-        int source = 0;
+        int number = 0;
         switch(label)
         {
-            case "A":
-                source = 0;
-                break;
-            case "B":
-                source = 1;
-                break;
-            case "C":
-                source = 2;
-                break;
-            case "D":
-                source = 3;
-                break;
-            case "E":
-                source = 4;
-                break;
-            case "F":
-                source = 5;
-                break;
-            case "G":
-                source = 6;
-                break;
-            case "H":
-                source = 7;
-                break;
-            case "I":
-                source = 8;
-                break;
-            default:
-                break;
+            case "A" -> number = 0;
+            case "B" -> number = 1;
+            case "C" -> number = 2;
+            case "D" -> number = 3;
+            case "E" -> number = 4;
+            case "F" -> number = 5;
+            case "G" -> number = 6;
+            case "H" -> number = 7;
+            case "I" -> number = 8;
+            default -> number = 0;
         }
-        return source;
-    }
-
-    public int getEnd(T vertexLabel)
-    {
-        String label = (String) vertexLabel;
-        int end = 0;
-        switch(label)
-        {
-            case "A":
-                end = 0;
-                break;
-            case "B":
-                end = 1;
-                break;
-            case "C":
-                end = 2;
-                break;
-            case "D":
-                end = 3;
-                break;
-            case "E":
-                end = 4;
-                break;
-            case "F":
-                end = 5;
-                break;
-            case "G":
-                end = 6;
-                break;
-            case "H":
-                end = 7;
-                break;
-            case "I":
-                end = 8;
-                break;
-            default:
-                break;
-        }
-        return end;
+        return number;
     }
 
     public boolean[][] getAdjacencyMatrix()
     {
         return this.edges;
+    }
+
+    public void getNeighborsList(T vertexLabel)
+    {
+        int labelNumber = getVertexNumber(vertexLabel);
+        int count = 0;
+        String[] answer;
+        for (int i = 0; i < labels.length; i++)
+        {
+            if (edges[labelNumber][i])
+            {
+                count++;
+            }
+        }
+        answer = new String[count];
+        count = 0;
+        for (int i = 0; i < labels.length; i++)
+        {
+            if (edges[labelNumber][i])
+            {
+                answer[count++] = getVertexLabel(i);
+            }
+        }
+        System.out.print("Edge list for vertex " + (String) vertexLabel + ": ");
+        for (int i = 0; i < answer.length; i++)
+        {
+            System.out.print(answer[i] + " ");
+        }
+        System.out.println();
+    }
+
+    private String getVertexLabel(int vertex)
+    {
+        String label = "";
+        switch(vertex)
+        {
+            case 0 -> label = "A";
+            case 1 -> label = "B";
+            case 2 -> label = "C";
+            case 3 -> label = "D";
+            case 4 -> label = "E";
+            case 5 -> label = "F";
+            case 6 -> label = "G";
+            case 7 -> label = "H";
+            case 8 -> label = "I";
+            default -> label = "";
+        }
+        return label;
     }
 } // end DirectedGraph

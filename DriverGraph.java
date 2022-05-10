@@ -1,5 +1,4 @@
-// import javax.swing.plaf.metal.MetalPopupMenuSeparatorUI;
-
+/** Driver code containing main method for graph representations and traversals.  */
 public class DriverGraph
 {
     public static void main(String[]args)
@@ -46,6 +45,19 @@ public class DriverGraph
             System.out.println();
             c++;
         }
+
+        System.out.println();
+
+        System.out.print("Adjacency Lists \n");
+        graph.getNeighborsList("A");
+        graph.getNeighborsList("B");
+        graph.getNeighborsList("C");
+        graph.getNeighborsList("D");
+        graph.getNeighborsList("E");
+        graph.getNeighborsList("F");
+        graph.getNeighborsList("G");
+        graph.getNeighborsList("H");
+        graph.getNeighborsList("I");
 
         System.out.println();
 
